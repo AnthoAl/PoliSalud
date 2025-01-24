@@ -16,14 +16,13 @@ public class CatalogoDTO {
         this.Nombre = nombre;
     }
     
-    public CatalogoDTO(Integer idCatalogo, Integer idTipoCatalogo, String nombre, String estadoRegistro,
-            String fechaCreacion, String fechaModificacion) {
-        IdCatalogo = idCatalogo;
-        IdTipoCatalogo = idTipoCatalogo;
-        Nombre = nombre;
-        EstadoRegistro = estadoRegistro;
-        FechaCreacion = fechaCreacion;
-        FechaModificacion = fechaModificacion;
+    public CatalogoDTO(Integer idCatalogo, Integer idTipoCatalogo, String nombre, String estadoRegistro,String fechaCreacion, String fechaModificacion) {
+        this.IdCatalogo = idCatalogo;
+        this.IdTipoCatalogo = idTipoCatalogo;
+        this.Nombre = nombre;
+        this.EstadoRegistro = estadoRegistro;
+        this.FechaCreacion = fechaCreacion;
+        this.FechaModificacion = fechaModificacion;
     }
 
     public Integer getIdCatalogo() {
