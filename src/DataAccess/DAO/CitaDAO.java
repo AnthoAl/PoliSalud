@@ -6,18 +6,20 @@ import java.util.List;
 import DataAccess.DTO.*;
 import DataAccess.DataHelper;
 
-public class CentroMedicoDAO extends DataHelper{
+public class CitaDAO extends DataHelper{
     
-    public void create(CentroMedicoDTO centroMedico) throws Exception{
-        String sql = "INSERT INTO CentroMedico (IdCentroMedico, Nombre, Direccion, EstadoRegistro) VALUES (?, ?, ?, ?)";
+        public void create(CitaDTO cita) throws Exception{
+        String sql = "INSERT INTO Cita (IdCita, IdMedico, IdPaciente, FechaCita, HoraCita, EstadoCita) VALUES (?, ?, ?, ?, ?, ?)";
         Connection conn = null;
         try{
             conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, centroMedico.getIdCentroMedico());
-            pstmt.setString(2, centroMedico.getNombre());
-            pstmt.setString(3, centroMedico.getDireccion());
-            pstmt.setString(4, centroMedico.getEstadoRegistro());
+            pstmt.setInt(1, cita.getIdCita());
+            pstmt.setInt(2, cita.getIdPaciente());
+            pstmt.setInt(3, cita.getIdPaciente());
+            pstmt.setString(4, cita.getFechaCita());
+            pstmt.setString(5, cita.getHoraCita());
+            pstmt.setString(6, cita.getEstadoRegistro());
             pstmt.executeUpdate();
             pstmt.close();
         }catch (SQLException e){
@@ -27,20 +29,22 @@ public class CentroMedicoDAO extends DataHelper{
         }
     }
 
-    public CentroMedicoDTO read(int id) throws Exception{
-        String sql = "SELECT * FROM CentroMedico WHERE IdCentroMedico = ?";
+    public CitaDTO read(int id) throws Exception{
+        String sql = "SELECT * FROM Cita WHERE IdCita = ?";
         Connection conn = null;
-        CentroMedicoDTO centroMedico = null;
+        CitaDTO cita = null;
         try{
             conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
             if(rs.next()){
-                centroMedico = new CentroMedicoDTO(
-                    rs.getInt("IdCentroMedico"),
-                    rs.getString("Nombre"),
-                    rs.getString("Direccion"),
+                cita = new CitaDTO(
+                    rs.getInt("IdCita"),
+                    rs.getInt("IdMedico"),
+                    rs.getInt("IdPaciente"),
+                    rs.getString("FechaCita"),
+                    rs.getString("HoraCita"),
                     rs.getString("EstadoRegistro"),
                     rs.getString("FechaCreacion"),
                     rs.getString("FechaModificacion")
@@ -53,22 +57,24 @@ public class CentroMedicoDAO extends DataHelper{
         } finally{
             closeConnection();
         }
-        return centroMedico;
+        return cita;
     }
 
-    public List<CentroMedicoDTO> readAll() throws Exception{
-        String sql = "SELECT * FROM CentroMedico";
+    public List<CitaDTO> readAll() throws Exception{
+        String sql = "SELECT * FROM Cita";
         Connection conn = null;
-        List<CentroMedicoDTO> CentroMedico = new ArrayList<>();
+        List<CitaDTO> Cita = new ArrayList<>();
         try{
             conn = openConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while(rs.next()){
-                CentroMedico.add(new CentroMedicoDTO(
-                    rs.getInt("IdCentroMedico"),
-                    rs.getString("Nombre"),
-                    rs.getString("Direccion"),
+                Cita.add(new CitaDTO(
+                    rs.getInt("IdCita"),
+                    rs.getInt("IdMedico"),
+                    rs.getInt("IdPaciente"),
+                    rs.getString("FechaCita"),
+                    rs.getString("HoraCita"),
                     rs.getString("EstadoRegistro"),
                     rs.getString("FechaCreacion"),
                     rs.getString("FechaModificacion")
@@ -81,19 +87,21 @@ public class CentroMedicoDAO extends DataHelper{
         } finally{
             closeConnection();
         }
-        return CentroMedico;
+        return Cita;
     }
 
-    public void update(CentroMedicoDTO centroMedico) throws Exception{
-        String sql = "UPDATE CentroMedico SET Nombre = ?, EstadoRegistro = ?, FechaModificacion = ? WHERE IdCentroMedico = ?";
+    public void update(CitaDTO cita) throws Exception{
+        String sql = "UPDATE Cita SET Nombre = ?, EstadoRegistro = ?, FechaModificacion = ? WHERE IdCita = ?";
         Connection conn = null;
         try{
             conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, centroMedico.getNombre());
-            pstmt.setString(2, centroMedico.getEstadoRegistro());
-            pstmt.setString(3, centroMedico.getFechaModificacion());
-            pstmt.setInt(4, centroMedico.getIdCentroMedico());
+            pstmt.setInt(1, cita.getIdCita());
+            pstmt.setInt(2, cita.getIdPaciente());
+            pstmt.setInt(3, cita.getIdPaciente());
+            pstmt.setString(4, cita.getFechaCita());
+            pstmt.setString(5, cita.getHoraCita());
+            pstmt.setString(6, cita.getEstadoRegistro());
             pstmt.executeUpdate();
             pstmt.close();
         }catch (SQLException e){
@@ -104,7 +112,7 @@ public class CentroMedicoDAO extends DataHelper{
     }
 
     public void delete(int id) throws Exception{
-        String sql = "DELETE FROM CentroMedico WHERE idCentroMedico = ?";
+        String sql = "DELETE FROM Cita WHERE idCita = ?";
         Connection conn = null;
         try{
             conn = openConnection();
@@ -118,4 +126,6 @@ public class CentroMedicoDAO extends DataHelper{
             closeConnection();
         }
     }
+
+
 }
