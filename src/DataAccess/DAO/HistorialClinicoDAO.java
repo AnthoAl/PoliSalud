@@ -61,7 +61,7 @@ public class HistorialClinicoDAO extends DataHelper{
     }
 
     public List<HistorialClinicoDTO> readAll() throws Exception{
-        String sql = "SELECT * FROM Cita";
+        String sql = "SELECT * FROM HistorialClinico";
         Connection conn = null;
         List<HistorialClinicoDTO> HistorialClinico = new ArrayList<>();
         try{
@@ -91,7 +91,7 @@ public class HistorialClinicoDAO extends DataHelper{
     }
 
     public void update(HistorialClinicoDTO HistorialClinico) throws Exception{
-        String sql = "UPDATE Cita SET Diagnostico = ?, Tratamiento = ?, EstadoRegistro = ?, FechaModificacion = ? WHERE IdHistorialClinico = ?";
+        String sql = "UPDATE HistorialClinico Diagnostico = ?, Tratamiento = ?, EstadoRegistro = ?, FechaModificacion = ? WHERE IdHistorialClinico = ?";
         Connection conn = null;
         try{
             conn = openConnection();
