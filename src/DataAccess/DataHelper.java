@@ -5,26 +5,22 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public abstract class DataHelper {
-    private static String DBPathConnection = "jdbc:sqlite:database//db_PoliSalud.sqlite"; 
-    private static Connection conn = null;
-    protected DataHelper(){    }
+    private static final String DBPathConnection = "jdbc:sqlite:database//db_PoliSalud.sqlite"; 
     
-    protected static synchronized Connection openConnection() throws Exception{
-        try {
-            if(conn == null)
-                conn = DriverManager.getConnection(DBPathConnection);
-        } catch (SQLException e) {
-             throw e;
-        } 
+    private Connection conn = null;
+    
+    protected DataHelper() { }
+    
+    protected synchronized Connection openConnection() throws SQLException {
+        if (conn == null || conn.isClosed()) {
+            conn = DriverManager.getConnection(DBPathConnection);
+        }
         return conn;
     }
 
-    protected static void closeConnection() throws Exception{
-        try {
-            if (conn != null)
-                conn.close();
-        } catch (Exception e) {
-            throw e;
+    protected void closeConnection() throws SQLException {
+        if (conn != null && !conn.isClosed()) {
+            conn.close();
         }
     }
 }
