@@ -85,7 +85,7 @@ public class CorreoDAO extends DataHelper{
     }
 
     public void update(CorreoDTO correo) throws Exception{
-        String sql = "UPDATE Correo SET Correo = ?, EstadoRegistro = ?, FechaModificacion = ? WHERE IdCita = ?";
+        String sql = "UPDATE Correo SET Correo = ?, EstadoRegistro = ?, FechaModificacion = ? WHERE IdCorreo = ?";
         Connection conn = null;
         try{
             conn = openConnection();
