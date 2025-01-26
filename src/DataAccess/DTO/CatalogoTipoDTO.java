@@ -71,4 +71,5 @@ public class CatalogoTipoDTO {
         + "\n FechaCreacion:  "+ getFechaCreacion()    
         + "\n FechaModifica:  "+ getFechaModificacion();
     }
+
 }
