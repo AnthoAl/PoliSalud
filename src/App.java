@@ -5,7 +5,7 @@ public class App {
         try {
             // Llamar a las pruebas directamente
             // TestApp.testCorreoDAO();
-            // TestApp.testCatalogoTipoDAO();
+            TestApp.testCatalogoTipoDAO();
             // TestApp.testCentroMedicoDAO();
         } catch (Exception e) {
             e.printStackTrace();

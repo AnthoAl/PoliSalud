@@ -108,7 +108,7 @@ public class CatalogoDAO extends DataHelper{
     }
 
     public void delete(int id) throws Exception {
-        String sql = "DELETE FROM Catalogo WHERE IdCatalogo = ?";
+        String sql = "UPDATE Catalogo SET EstadoRegistro = 'X' WHERE IdCatalogo = ?";
         Connection conn = null;
         try {
             conn = openConnection();

@@ -113,7 +113,7 @@ public class CitaDAO extends DataHelper{
     }
 
     public void delete(int id) throws Exception{
-        String sql = "DELETE FROM Cita WHERE idCita = ?";
+        String sql = "UPDATE Cita SET EstadoRegistro = 'X' WHERE idCita = ?";
         Connection conn = null;
         try{
             conn = openConnection();

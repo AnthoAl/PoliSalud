@@ -103,7 +103,7 @@ public class TelefonoDAO extends DataHelper{
     }
 
     public void delete(int id) throws Exception{
-        String sql = "DELETE FROM Telefono WHERE IdTelefono = ?";
+        String sql = "UPDATE Telefono SET EstadoRegistro = 'X' WHERE IdTelefono = ?";
         Connection conn = null;
         try{
             conn = openConnection();

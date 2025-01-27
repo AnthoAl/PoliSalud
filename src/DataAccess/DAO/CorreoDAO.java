@@ -104,7 +104,7 @@ public class CorreoDAO extends DataHelper{
     }
 
     public void delete(int id) throws Exception{
-        String sql = "DELETE FROM Correo WHERE IdCorreo = ?";
+        String sql = "UPDATE Correo SET EstadoRegistro = 'X' WHERE IdCorreo = ?";
         Connection conn = null;
         try{
             conn = openConnection();

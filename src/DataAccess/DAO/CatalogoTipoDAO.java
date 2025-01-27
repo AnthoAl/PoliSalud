@@ -117,21 +117,20 @@ public class CatalogoTipoDAO extends DataHelper{
         }
     }
     
-    
-
-    public void delete(int id) throws Exception{
-        String sql = "DELETE FROM CatalogoTipo WHERE IdCatalogoTipo = ?";
+    public void delete(int id) throws Exception {
+        String sql = "UPDATE CatalogoTipo SET EstadoRegistro = 'X' WHERE IdCatalogoTipo = ?";
         Connection conn = null;
-        try{
+        try {
             conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, id);
             pstmt.executeUpdate();
             pstmt.close();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw e;
-        }finally{
+        } finally {
             closeConnection();
         }
     }
+    
 }

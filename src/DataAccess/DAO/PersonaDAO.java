@@ -137,7 +137,7 @@ public class PersonaDAO extends DataHelper {
     }
 
     public void delete(int id) throws Exception {
-        String sql = "DELETE FROM Persona WHERE IdPersona = ?";
+        String sql = "UPDATE Persona SET EstadoRegistro = 'X' WHERE IdPersona = ?";
         Connection conn = null;
         try {
             conn = openConnection();

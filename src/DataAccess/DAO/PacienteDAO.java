@@ -104,7 +104,7 @@ public class PacienteDAO extends DataHelper{
     }
 
     public void delete(int id) throws Exception{
-        String sql = "DELETE FROM Paciente WHERE IdPaciente = ?";
+        String sql = "UPDATE Paciente SET EstadoRegistro = 'X' WHERE IdPaciente = ?";
         Connection conn = null;
         try{
             conn = openConnection();

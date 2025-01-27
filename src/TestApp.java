@@ -43,44 +43,44 @@ public class TestApp {
     //     System.out.println("Correo eliminado con éxito");
     // }
 
-    // // TEST DE CATALOGO
-    // public static void testCatalogoTipoDAO() throws Exception {
-    //     CatalogoTipoDAO catalogoTipoDAO = new CatalogoTipoDAO();
-    //     CatalogoDAO catalogoDAO = new CatalogoDAO();
+    // TEST DE CATALOGO
+    public static void testCatalogoTipoDAO() throws Exception {
+        CatalogoTipoDAO catalogoTipoDAO = new CatalogoTipoDAO();
+        CatalogoDAO catalogoDAO = new CatalogoDAO();
 
-    //     // Crear un registro de CatalogoTipo
-    //     System.out.println("Crear un Tipo de Catalogo");
-    //     CatalogoTipoDTO catalogoTipoDTO = new CatalogoTipoDTO(0, "Tipo de prueba", "A", null, null);
-    //     catalogoTipoDAO.create(catalogoTipoDTO);
-    //     System.out.println("Tipo de Catalogo creado con éxito");
+        // // Crear un registro de CatalogoTipo
+        // System.out.println("Crear un Tipo de Catalogo");
+        // CatalogoTipoDTO catalogoTipoDTO = new CatalogoTipoDTO(0, "Tipo de prueba", "A", null, null);
+        // catalogoTipoDAO.create(catalogoTipoDTO);
+        // System.out.println("Tipo de Catalogo creado con éxito");
 
-    //     // Crear un registro en Catalogo
-    //     System.out.println("Crear un Registro en Catalogo");
-    //     CatalogoDTO catalogoDTO = new CatalogoDTO(0, catalogoTipoDTO.getIdCatalogoTipo(), "Catalogo de prueba", "A", null, null);
-    //     catalogoDAO.create(catalogoDTO);
-    //     System.out.println("Registro en Catalogo creado con éxito");
+        // // Crear un registro en Catalogo
+        // System.out.println("Crear un Registro en Catalogo");
+        // CatalogoDTO catalogoDTO = new CatalogoDTO(0, catalogoTipoDTO.getIdCatalogoTipo(), "Catalogo de prueba", "A", null, null);
+        // catalogoDAO.create(catalogoDTO);
+        // System.out.println("Registro en Catalogo creado con éxito");
 
-    //     // Leer un registro de Catalogo
-    //     System.out.println("Leer un Registro de Catalogo por ID");
-    //     CatalogoDTO catalogoLeido = catalogoDAO.read(1);
-    //     if (catalogoLeido != null) {
-    //         System.out.println("ID: " + catalogoLeido.getIdCatalogo());
-    //         System.out.println("Nombre: " + catalogoLeido.getNombre());
-    //     } else {
-    //         System.out.println("No se encontró el registro de Catalogo");
-    //     }
+        // // Leer un registro de Catalogo
+        // System.out.println("Leer un Registro de Catalogo por ID");
+        // CatalogoDTO catalogoLeido = catalogoDAO.read(1);
+        // if (catalogoLeido != null) {
+        //     System.out.println("ID: " + catalogoLeido.getIdCatalogo());
+        //     System.out.println("Nombre: " + catalogoLeido.getNombre());
+        // } else {
+        //     System.out.println("No se encontró el registro de Catalogo");
+        // }
 
-    //     // Actualizar un registro de Catalogo
-    //     System.out.println("Actualizar un Registro de Catalogo");
-    //     catalogoLeido.setNombre("Nombre Actualizado");
-    //     catalogoDAO.update(catalogoLeido);
-    //     System.out.println("Registro actualizado con éxito.");
+        // // Actualizar un registro de Catalogo
+        // System.out.println("Actualizar un Registro de Catalogo");
+        // catalogoLeido.setNombre("Nombre Actualizado");
+        // catalogoDAO.update(catalogoLeido);
+        // System.out.println("Registro actualizado con éxito.");
 
-    //     // Eliminar un registro de Catalogo
-    //     System.out.println("Eliminar un Registro de Catalogo");
-    //     catalogoDAO.delete(1);
-    //     System.out.println("Registro eliminado con éxito");
-    // }
+        // Eliminar un registro de Catalogo
+        System.out.println("Eliminar un Registro de Catalogo");
+        catalogoTipoDAO.delete(1);
+        System.out.println("Registro eliminado con éxito");
+    }
 
     // // TEST DE CENTRO MEDICO
     // public static void testCentroMedicoDAO() throws Exception {

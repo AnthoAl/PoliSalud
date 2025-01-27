@@ -112,7 +112,7 @@ public class HistorialClinicoDAO extends DataHelper{
     }
 
     public void delete(int id) throws Exception{
-        String sql = "DELETE FROM HistorialClinico WHERE IdHistorialClinico = ?";
+        String sql = "UPDATE HistorialClinico SET EstadoRegistro = 'X' WHERE IdHistorialClinico = ?";
         Connection conn = null;
         try{
             conn = openConnection();
