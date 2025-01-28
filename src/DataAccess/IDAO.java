@@ -4,6 +4,7 @@ import java.util.List;
 
 public interface IDAO<T> {
 
+    //IDAO
     T readBy(Integer id) throws Exception;
 
     List<T> readAll() throws Exception;

@@ -1,15 +1,14 @@
 package BusinessLogic;
 
+import DataAccess.IDAO;
 import java.util.List;
 import java.util.function.Supplier;
 
-import DataAccess.IDAO;
-
-public class BLFactory {
+public class BLFactory<T> {
 
     private final IDAO<T> oDAO;
 
-    // Constructor que usa un Supplier para crear la instancia de T
+    // Constructor usa un Supplier para crear la instancia de T
     public BLFactory(Supplier<IDAO<T>> supplier) {
         this.oDAO = supplier.get();
     }
