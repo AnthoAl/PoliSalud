@@ -13,10 +13,11 @@ public class MedicoDTO {
 
     public MedicoDTO() {}
 
-    public MedicoDTO(Integer idPersonaMedico, Integer idCentroMedico, Integer idCatalogoEspecialidad) {
+    public MedicoDTO(Integer idPersonaMedico, Integer idCentroMedico, Integer idCatalogoEspecialidad,String numeroLicencia) {
         this.IdPersonaMedico = idPersonaMedico;
         this.IdCentroMedico = idCentroMedico;
         this.IdCatalogoEspecialidad = idCatalogoEspecialidad;
+        this.NumeroLicencia = numeroLicencia;
     }
 
     public MedicoDTO(Integer idMedico, Integer idPersonaMedico, Integer idCentroMedico, Integer idCatalogoEspecialidad, String numeroLicencia, String estadoRegistro, String fechaCreacion, String fechaModificacion) {

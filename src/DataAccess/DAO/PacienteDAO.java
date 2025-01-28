@@ -9,15 +9,13 @@ import DataAccess.DataHelper;
 public class PacienteDAO extends DataHelper{
     
     public void create(PacienteDTO Paciente) throws Exception{
-        String sql = "INSERT INTO Paciente (IdPaciente, IdPersonaPaciente, IdCatalogoAfiliacion, EstadoRegistro) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO Paciente (IdPersonaPaciente, IdCatalogoAfiliacion) VALUES (?, ?)";
         Connection conn = null;
         try{
             conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, Paciente.getIdPaciente());
-            pstmt.setInt(2, Paciente.getIdPersonaPaciente());
-            pstmt.setInt(3, Paciente.getIdCatalogoAfiliacion());
-            pstmt.setString(4, Paciente.getEstadoRegistro());
+            pstmt.setInt(1, Paciente.getIdPersonaPaciente());
+            pstmt.setInt(2, Paciente.getIdCatalogoAfiliacion());
             pstmt.executeUpdate();
             pstmt.close();
         }catch (SQLException e){
@@ -28,7 +26,7 @@ public class PacienteDAO extends DataHelper{
     }
 
     public PacienteDTO read(int id) throws Exception{
-        String sql = "SELECT * FROM Paciente WHERE IdPaciente = ?";
+        String sql = "SELECT * FROM Paciente WHERE EstadoRegistro ='A' AND IdPaciente = ?";
         Connection conn = null;
         PacienteDTO Paciente = null;
         try{
@@ -57,7 +55,7 @@ public class PacienteDAO extends DataHelper{
     }
 
     public List<PacienteDTO> readAll() throws Exception{
-        String sql = "SELECT * FROM Paciente";
+        String sql = "SELECT * FROM Paciente WHERE EstadoRegistro ='A'";
         Connection conn = null;
         List<PacienteDTO> Paciente = new ArrayList<>();
         try{
@@ -85,15 +83,13 @@ public class PacienteDAO extends DataHelper{
     }
 
     public void update(PacienteDTO Paciente) throws Exception{
-        String sql = "UPDATE Paciente EstadoRegistro = ?, FechaModificacion = ? WHERE IdPaciente = ?";
+        String sql = "UPDATE Paciente SET IdCatalogoAfiliacion = ?, FechaModificacion = datetime('now','localtime') WHERE IdPaciente = ?";
         Connection conn = null;
         try{
             conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, Paciente.getIdPaciente());
-            pstmt.setInt(2, Paciente.getIdPersonaPaciente());
-            pstmt.setInt(3, Paciente.getIdCatalogoAfiliacion());
-            pstmt.setString(4, Paciente.getEstadoRegistro());
+            pstmt.setInt(1, Paciente.getIdCatalogoAfiliacion());
+            pstmt.setInt(2, Paciente.getIdPaciente());
             pstmt.executeUpdate();
             pstmt.close();
         }catch (SQLException e){

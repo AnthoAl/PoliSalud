@@ -9,17 +9,15 @@ import DataAccess.DataHelper;
 public class HistorialClinicoDAO extends DataHelper{
 
     public void create(HistorialClinicoDTO HistorialClinico) throws Exception{
-        String sql = "INSERT INTO HistorialClinico (IdHistorialClinico, IdPaciente, IdCita, Diagnostico, Tratamiento, EstadoRegistro) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO HistorialClinico (IdPaciente, IdCita, Diagnostico, Tratamiento) VALUES (?, ?, ?, ?)";
         Connection conn = null;
         try{
             conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, HistorialClinico.getIdHistorialClinico());
-            pstmt.setInt(2, HistorialClinico.getIdPaciente());
-            pstmt.setInt(3, HistorialClinico.getIdCita());
-            pstmt.setString(4, HistorialClinico.getDiagnostico());
-            pstmt.setString(5, HistorialClinico.getTratamiento());
-            pstmt.setString(6, HistorialClinico.getEstadoRegistro());
+            pstmt.setInt(1, HistorialClinico.getIdPaciente());
+            pstmt.setInt(2, HistorialClinico.getIdCita());
+            pstmt.setString(3, HistorialClinico.getDiagnostico());
+            pstmt.setString(4, HistorialClinico.getTratamiento());
             pstmt.executeUpdate();
             pstmt.close();
         }catch (SQLException e){
@@ -30,7 +28,7 @@ public class HistorialClinicoDAO extends DataHelper{
     }
 
     public HistorialClinicoDTO read(int id) throws Exception{
-        String sql = "SELECT * FROM HistorialClinico WHERE IdHistorialClinico = ?";
+        String sql = "SELECT * FROM HistorialClinico WHERE EstadoRegistro ='A' AND IdHistorialClinico = ?";
         Connection conn = null;
         HistorialClinicoDTO HistorialClinico = null;
         try{
@@ -61,7 +59,7 @@ public class HistorialClinicoDAO extends DataHelper{
     }
 
     public List<HistorialClinicoDTO> readAll() throws Exception{
-        String sql = "SELECT * FROM HistorialClinico";
+        String sql = "SELECT * FROM HistorialClinico WHERE EstadoRegistro ='A'";
         Connection conn = null;
         List<HistorialClinicoDTO> HistorialClinico = new ArrayList<>();
         try{
@@ -91,17 +89,14 @@ public class HistorialClinicoDAO extends DataHelper{
     }
 
     public void update(HistorialClinicoDTO HistorialClinico) throws Exception{
-        String sql = "UPDATE HistorialClinico Diagnostico = ?, Tratamiento = ?, EstadoRegistro = ?, FechaModificacion = ? WHERE IdHistorialClinico = ?";
+        String sql = "UPDATE HistorialClinico SET Diagnostico = ?, Tratamiento = ?, FechaModificacion = datetime('now','localtime') WHERE IdHistorialClinico = ?";
         Connection conn = null;
         try{
             conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, HistorialClinico.getIdHistorialClinico());
-            pstmt.setInt(2, HistorialClinico.getIdPaciente());
-            pstmt.setInt(3, HistorialClinico.getIdCita());
-            pstmt.setString(4, HistorialClinico.getDiagnostico());
-            pstmt.setString(5, HistorialClinico.getTratamiento());
-            pstmt.setString(6, HistorialClinico.getEstadoRegistro());
+            pstmt.setString(1, HistorialClinico.getDiagnostico());
+            pstmt.setString(2, HistorialClinico.getTratamiento());
+            pstmt.setInt(3, HistorialClinico.getIdHistorialClinico());
             pstmt.executeUpdate();
             pstmt.close();
         }catch (SQLException e){

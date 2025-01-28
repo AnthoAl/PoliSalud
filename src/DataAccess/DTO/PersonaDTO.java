@@ -1,7 +1,5 @@
 package DataAccess.DTO;
 
-import java.sql.Date;
-
 public class PersonaDTO {
 
     private Integer   IdPersona;

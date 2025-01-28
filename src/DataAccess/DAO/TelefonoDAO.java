@@ -8,15 +8,13 @@ import DataAccess.DataHelper;
 
 public class TelefonoDAO extends DataHelper{
     public void create(TelefonoDTO Telefono) throws Exception{
-        String sql = "INSERT INTO Telefono (IdTelefono, IdPersona, NumeroTelefono, EstadoRegistro) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO Telefono (IdPersona, NumeroTelefono) VALUES (?, ?)";
         Connection conn = null;
         try{
             conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, Telefono.getIdTelefono());
-            pstmt.setInt(2, Telefono.getIdPersona());
-            pstmt.setString(3, Telefono.getNumeroTelefono());
-            pstmt.setString(4, Telefono.getEstadoRegistro());
+            pstmt.setInt(1, Telefono.getIdPersona());
+            pstmt.setString(2, Telefono.getNumeroTelefono());
             pstmt.executeUpdate();
             pstmt.close();
         }catch (SQLException e){
@@ -27,7 +25,7 @@ public class TelefonoDAO extends DataHelper{
     }
 
     public TelefonoDTO read(int id) throws Exception{
-        String sql = "SELECT * FROM Telefono WHERE IdTelefono = ?";
+        String sql = "SELECT * FROM Telefono WHERE EstadoRegistro ='A' AND IdTelefono = ?";
         Connection conn = null;
         TelefonoDTO Telefono = null;
         try{
@@ -56,7 +54,7 @@ public class TelefonoDAO extends DataHelper{
     }
 
     public List<TelefonoDTO> readAll() throws Exception{
-        String sql = "SELECT * FROM Telefono";
+        String sql = "SELECT * FROM Telefono WHERE EstadoRegistro ='A'";
         Connection conn = null;
         List<TelefonoDTO> Telefono = new ArrayList<>();
         try{
@@ -84,15 +82,13 @@ public class TelefonoDAO extends DataHelper{
     }
 
     public void update(TelefonoDTO Telefono) throws Exception{
-        String sql = "UPDATE Telefono NumeroTelefono = ?, FechaModificacion = ? WHERE IdTelefono = ?";
+        String sql = "UPDATE Telefono NumeroTelefono = ?, FechaModificacion = datetime('now','localtime') WHERE IdTelefono = ?";
         Connection conn = null;
         try{
             conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, Telefono.getIdTelefono());
-            pstmt.setInt(2, Telefono.getIdPersona());
-            pstmt.setString(3, Telefono.getNumeroTelefono());
-            pstmt.setString(4, Telefono.getEstadoRegistro());
+            pstmt.setString(1, Telefono.getNumeroTelefono());
+            pstmt.setInt(2, Telefono.getIdTelefono());
             pstmt.executeUpdate();
             pstmt.close();
         }catch (SQLException e){

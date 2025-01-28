@@ -83,14 +83,13 @@ public class CentroMedicoDAO extends DataHelper{
     }
 
     public void update(CentroMedicoDTO centroMedico) throws Exception{
-        String sql = "UPDATE CentroMedico SET Nombre = ?, Direccion = ?, FechaModificacion = datetime('now','localtime') WHERE IdCentroMedico = ?";
+        String sql = "UPDATE CentroMedico SET Nombre = ?, FechaModificacion = datetime('now','localtime') WHERE IdCentroMedico = ?";
         Connection conn = null;
         try{
             conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, centroMedico.getNombre());
-            pstmt.setString(2, centroMedico.getDireccion());
-            pstmt.setInt(3, centroMedico.getIdCentroMedico());
+            pstmt.setInt(2, centroMedico.getIdCentroMedico());
             pstmt.executeUpdate();
             pstmt.close();
         }catch (SQLException e){

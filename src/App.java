@@ -3,10 +3,20 @@ import java.util.Date;
 import DataAccess.DAO.CatalogoDAO;
 import DataAccess.DAO.CatalogoTipoDAO;
 import DataAccess.DAO.CentroMedicoDAO;
+import DataAccess.DAO.CitaDAO;
+import DataAccess.DAO.CorreoDAO;
+import DataAccess.DAO.HistorialClinicoDAO;
+import DataAccess.DAO.MedicoDAO;
+import DataAccess.DAO.PacienteDAO;
 import DataAccess.DAO.PersonaDAO;
 import DataAccess.DTO.CatalogoDTO;
 import DataAccess.DTO.CatalogoTipoDTO;
 import DataAccess.DTO.CentroMedicoDTO;
+import DataAccess.DTO.CitaDTO;
+import DataAccess.DTO.CorreoDTO;
+import DataAccess.DTO.HistorialClinicoDTO;
+import DataAccess.DTO.MedicoDTO;
+import DataAccess.DTO.PacienteDTO;
 import DataAccess.DTO.PersonaDTO;
 
 public class App {
@@ -14,10 +24,10 @@ public class App {
         System.out.println("Hello, PoliSalud! :)");
 
         //Update y Delete funcionan similar por el borrado lógico
-        PersonaDAO dAO = new PersonaDAO();
-       // PersonaDTO dTO = dAO.read(2); //Recupera el objeto catalogo con id 1
+        CitaDAO dAO = new CitaDAO();
+        CitaDTO dTO = dAO.read(1); //Recupera el objeto catalogo con id 1
         
-        //dTO.setDireccion("Ppepin");  //Modifica el nombre del catalogo
+        //dTO.setHoraCita("20:00:00");  //Modifica el nombre del catalogo
 
         //dAO.update(dTO); //Actualiza el catalogo con id 1
 
@@ -25,10 +35,10 @@ public class App {
         dAO.delete(2);
 
         //Create
-        //dAO.create(new PersonaDTO(2, 1, 2, "175025", "Diego", "Leo", "Aquino", "Bélez", "2005-01-21","Guamaní"));
+        //dAO.create(new CitaDTO(1, 1, "2025-01-18", "17:20:00"));
 
         //Read
-        for (PersonaDTO dto : dAO.readAll()) {
+        for (CitaDTO dto : dAO.readAll()) {
             System.out.println(dto);
         }
 

@@ -114,22 +114,16 @@ public class PersonaDAO extends DataHelper {
     }
 
     public void update(PersonaDTO persona) throws Exception {
-        String sql = "UPDATE Persona SET IdCatalogoRol = ?, IdCatalogoSexo = ?, IdCatalogoTipoIdentificacion = ?, NumeroIdentificacion = ?, PrimerNombre = ?, SegundoNombre = ?, PrimerApellido = ?, SegundoApellido = ?, FechaNacimiento = ?,  Direccion = ?, FechaModificacion = datetime('now','localtime') WHERE IdPersona = ?";
+        String sql = "UPDATE Persona SET IdCatalogoRol = ?, IdCatalogoSexo = ?, PrimerNombre = ?, Direccion = ?, FechaModificacion = datetime('now','localtime') WHERE IdPersona = ?";
         Connection conn = null;
         try {
             conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, persona.getIdCatalogoRol());
             pstmt.setInt(2, persona.getIdCatalogoSexo());
-            pstmt.setInt(3, persona.getIdCatalogoTipoIdentificacion());
-            pstmt.setString(4, persona.getNumeroIdentificacion());
-            pstmt.setString(5, persona.getPrimerNombre());
-            pstmt.setString(6, persona.getSegundoNombre());
-            pstmt.setString(7, persona.getPrimerApellido());
-            pstmt.setString(8, persona.getSegundoApellido());
-            pstmt.setString(9, persona.getFechaNacimiento());
-            pstmt.setString(10, persona.getDireccion());
-            pstmt.setInt(11, persona.getIdPersona());
+            pstmt.setString(3, persona.getPrimerNombre());
+            pstmt.setString(4, persona.getDireccion());
+            pstmt.setInt(5, persona.getIdPersona());
             pstmt.executeUpdate();
             pstmt.close();
         } catch (SQLException e) {

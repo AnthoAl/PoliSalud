@@ -11,7 +11,8 @@ public class CorreoDTO {
 
     public CorreoDTO() {}
 
-    public CorreoDTO(String correo) {
+    public CorreoDTO(Integer idPersona, String correo) {
+        this.IdPersona = idPersona;
         this.Correo = correo;
     }
 

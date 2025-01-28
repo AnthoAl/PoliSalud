@@ -9,7 +9,7 @@ import DataAccess.DataHelper;
 public class CitaDAO extends DataHelper{
     
     public void create(CitaDTO citaDTO) throws Exception {
-        String sql = "INSERT INTO Cita (IdMedico, IdPaciente, FechaCita, HoraCita, EstadoRegistro) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Cita (IdMedico, IdPaciente, FechaCita, HoraCita) VALUES (?, ?, ?, ?)";
         Connection conn = null;
         try {
             conn = openConnection();
@@ -18,7 +18,6 @@ public class CitaDAO extends DataHelper{
             pstmt.setInt(2, citaDTO.getIdPaciente());  // Asumiendo que IdPaciente es un entero
             pstmt.setString(3, citaDTO.getFechaCita());  // Asumiendo que FechaCita es una cadena
             pstmt.setString(4, citaDTO.getHoraCita());  // Asumiendo que HoraCita es un entero
-            pstmt.setString(5, citaDTO.getEstadoRegistro());  // EstadoRegistro es un string (por defecto 'A')
     
             pstmt.executeUpdate();
             pstmt.close();
@@ -31,7 +30,7 @@ public class CitaDAO extends DataHelper{
     
 
     public CitaDTO read(int id) throws Exception{
-        String sql = "SELECT * FROM Cita WHERE IdCita = ?";
+        String sql = "SELECT * FROM Cita WHERE EstadoRegistro ='A' AND IdCita = ?";
         Connection conn = null;
         CitaDTO cita = null;
         try{
@@ -62,7 +61,7 @@ public class CitaDAO extends DataHelper{
     }
 
     public List<CitaDTO> readAll() throws Exception{
-        String sql = "SELECT * FROM Cita";
+        String sql = "SELECT * FROM Cita WHERE EstadoRegistro ='A'";
         Connection conn = null;
         List<CitaDTO> Cita = new ArrayList<>();
         try{
@@ -92,17 +91,14 @@ public class CitaDAO extends DataHelper{
     }
 
     public void update(CitaDTO cita) throws Exception{
-        String sql = "UPDATE Cita SET Nombre = ?, EstadoRegistro = ?, FechaModificacion = ? WHERE IdCita = ?";
+        String sql = "UPDATE Cita SET FechaCita = ?, HoraCita = ?, FechaModificacion = datetime('now','localtime') WHERE IdCita = ?";
         Connection conn = null;
         try{
             conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, cita.getIdCita());
-            pstmt.setInt(2, cita.getIdPaciente());
-            pstmt.setInt(3, cita.getIdPaciente());
-            pstmt.setString(4, cita.getFechaCita());
-            pstmt.setString(5, cita.getHoraCita());
-            pstmt.setString(6, cita.getEstadoRegistro());
+            pstmt.setString(1, cita.getFechaCita());
+            pstmt.setString(2, cita.getHoraCita());
+            pstmt.setInt(3, cita.getIdCita());
             pstmt.executeUpdate();
             pstmt.close();
         }catch (SQLException e){

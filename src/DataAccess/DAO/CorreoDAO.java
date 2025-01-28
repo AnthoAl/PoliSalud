@@ -9,15 +9,13 @@ import DataAccess.DataHelper;
 public class CorreoDAO extends DataHelper{
     
         public void create(CorreoDTO correo) throws Exception{
-        String sql = "INSERT INTO Correo (IdCorreo, IdPersona, Correo, EstadoRegistro) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO Correo (IdPersona, Correo) VALUES (?, ?)";
         Connection conn = null;
         try{
             conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, correo.getIdCorreo());
-            pstmt.setInt(2, correo.getIdPersona());
-            pstmt.setString(3, correo.getCorreo());
-            pstmt.setString(4, correo.getEstadoRegistro());
+            pstmt.setInt(1, correo.getIdPersona());
+            pstmt.setString(2, correo.getCorreo());
             pstmt.executeUpdate();
             pstmt.close();
         }catch (SQLException e){
@@ -28,7 +26,7 @@ public class CorreoDAO extends DataHelper{
     }
 
     public CorreoDTO read(int id) throws Exception{
-        String sql = "SELECT * FROM Correo WHERE IdCorreo = ?";
+        String sql = "SELECT * FROM Correo WHERE EstadoRegistro ='A' AND IdCorreo = ?";
         Connection conn = null;
         CorreoDTO correo = null;
         try{
@@ -57,7 +55,7 @@ public class CorreoDAO extends DataHelper{
     }
 
     public List<CorreoDTO> readAll() throws Exception{
-        String sql = "SELECT * FROM Correo";
+        String sql = "SELECT * FROM Correo WHERE EstadoRegistro ='A'";
         Connection conn = null;
         List<CorreoDTO> Correo = new ArrayList<>();
         try{
@@ -85,15 +83,13 @@ public class CorreoDAO extends DataHelper{
     }
 
     public void update(CorreoDTO correo) throws Exception{
-        String sql = "UPDATE Correo SET Correo = ?, EstadoRegistro = ?, FechaModificacion = ? WHERE IdCorreo = ?";
+        String sql = "UPDATE Correo SET Correo = ?, FechaModificacion = datetime('now','localtime') WHERE IdCorreo = ?";
         Connection conn = null;
         try{
             conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, correo.getIdCorreo());
-            pstmt.setInt(2, correo.getIdPersona());
-            pstmt.setString(3, correo.getCorreo());
-            pstmt.setString(4, correo.getEstadoRegistro());
+            pstmt.setString(1, correo.getCorreo());
+            pstmt.setInt(2, correo.getIdCorreo());
             pstmt.executeUpdate();
             pstmt.close();
         }catch (SQLException e){
