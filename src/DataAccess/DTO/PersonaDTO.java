@@ -1,7 +1,6 @@
 package DataAccess.DTO;
 
 import java.sql.Date;
-import java.time.LocalDate;
 
 public class PersonaDTO {
 
@@ -14,8 +13,8 @@ public class PersonaDTO {
     private String    SegundoNombre;
     private String    PrimerApellido;
     private String    SegundoApellido;
-    private Date FechaNacimiento;
-    private String   Direccion;
+    private String    FechaNacimiento;
+    private String    Direccion;
     private String    EstadoRegistro;
     private String    FechaCreacion;
     private String    FechaModificacion;
@@ -25,7 +24,7 @@ public class PersonaDTO {
 
     public PersonaDTO(Integer idCatalogoRol, Integer idCatalogoSexo,
             Integer idCatalogoTipoIdentificacion, String numeroIdentificacion, String primerNombre,
-            String segundoNombre, String primerApellido, String segundoApellido, Date fechaNacimiento,
+            String segundoNombre, String primerApellido, String segundoApellido, String fechaNacimiento,
             String direccion) {
 
         this.IdCatalogoRol = idCatalogoRol;
@@ -42,7 +41,7 @@ public class PersonaDTO {
 
     public PersonaDTO(Integer idPersona, Integer idCatalogoRol, Integer idCatalogoSexo, 
                       Integer idCatalogoTipoIdentificacion, String numeroIdentificacion, String primerNombre,
-                      String segundoNombre, String primerApellido, String segundoApellido, Date fechaNacimiento,
+                      String segundoNombre, String primerApellido, String segundoApellido, String fechaNacimiento,
                       String direccion, String estadoRegistro, String fechaCreacion, String fechaModificacion) {
 
         this.IdPersona = idPersona;
@@ -133,11 +132,11 @@ public class PersonaDTO {
         SegundoApellido = segundoApellido;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return FechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         FechaNacimiento = fechaNacimiento;
     }
 

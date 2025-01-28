@@ -9,13 +9,12 @@ import DataAccess.DataHelper;
 public class CatalogoTipoDAO extends DataHelper{
     
     public void create(CatalogoTipoDTO catalogoTipoDTO) throws Exception{
-        String sql = "INSERT INTO CatalogoTipo (Nombre, EstadoRegistro) Values (?, ?)";
+        String sql = "INSERT INTO CatalogoTipo (Nombre) Values (?)";
         Connection conn = null;
         try{
             conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, catalogoTipoDTO.getNombre());
-            pstmt.setString(2, catalogoTipoDTO.getEstadoRegistro());
             pstmt.executeUpdate();
             pstmt.close();
         }catch (SQLException e){
@@ -26,7 +25,7 @@ public class CatalogoTipoDAO extends DataHelper{
     }
 
     public CatalogoTipoDTO read(int id) throws Exception {
-        String sql = "SELECT * FROM CatalogoTipo WHERE IdCatalogoTipo = ?";
+        String sql = "SELECT * FROM CatalogoTipo WHERE EstadoRegistro ='A' AND IdCatalogoTipo = ?";
         Connection conn = null;
         CatalogoTipoDTO catalogoTipoDTO = null;
         try {
@@ -58,7 +57,7 @@ public class CatalogoTipoDAO extends DataHelper{
     
 
     public List<CatalogoTipoDTO> readAll() throws Exception {
-        String sql = "SELECT * FROM CatalogoTipo";
+        String sql = "SELECT * FROM CatalogoTipo WHERE EstadoRegistro ='A'";
         Connection conn = null;
         List<CatalogoTipoDTO> catalogoTipos = new ArrayList<>();
         try {
@@ -85,7 +84,7 @@ public class CatalogoTipoDAO extends DataHelper{
     }
 
     public void update(CatalogoTipoDTO catalogoTipoDTO) throws Exception {
-        String sql = "UPDATE CatalogoTipo SET Nombre = ?, EstadoRegistro = ?, FechaModificacion = datetime('now','localtime') WHERE IdCatalogoTipo = ?";
+        String sql = "UPDATE CatalogoTipo SET Nombre = ?, FechaModificacion = datetime('now','localtime') WHERE IdCatalogoTipo = ?";
         Connection conn = null;
         try {
             conn = openConnection();  // Usar la conexión por instancia
@@ -96,8 +95,7 @@ public class CatalogoTipoDAO extends DataHelper{
             }
     
             pstmt.setString(1, catalogoTipoDTO.getNombre());
-            pstmt.setString(2, catalogoTipoDTO.getEstadoRegistro() != null ? catalogoTipoDTO.getEstadoRegistro() : "A");
-            pstmt.setInt(3, catalogoTipoDTO.getIdCatalogoTipo());
+            pstmt.setInt(2, catalogoTipoDTO.getIdCatalogoTipo());
             
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {

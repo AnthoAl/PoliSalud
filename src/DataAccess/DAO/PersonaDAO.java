@@ -32,7 +32,7 @@ public class PersonaDAO extends DataHelper {
             pstmt.setString(6, persona.getSegundoNombre());
             pstmt.setString(7, persona.getPrimerApellido());
             pstmt.setString(8, persona.getSegundoApellido());
-            pstmt.setDate(9, persona.getFechaNacimiento());
+            pstmt.setString(9, persona.getFechaNacimiento());
             pstmt.setString(10, persona.getDireccion());
             pstmt.executeUpdate();
             pstmt.close();
@@ -44,7 +44,7 @@ public class PersonaDAO extends DataHelper {
     }
 
     public PersonaDTO read(int id) throws Exception {
-        String sql = "SELECT * FROM Persona WHERE IdPersona = ?";
+        String sql = "SELECT * FROM Persona WHERE EstadoRegistro ='A' AND IdPersona = ?";
         Connection conn = null;
         PersonaDTO persona = null;
         try {
@@ -63,7 +63,7 @@ public class PersonaDAO extends DataHelper {
                         rs.getString("SegundoNombre"),
                         rs.getString("PrimerApellido"),
                         rs.getString("SegundoApellido"),
-                        rs.getDate("FechaNacimiento"),
+                        rs.getString("FechaNacimiento"),
                         rs.getString("Direccion"), sql, sql, sql
                 );
             }
@@ -78,7 +78,7 @@ public class PersonaDAO extends DataHelper {
     }
 
     public List<PersonaDTO> readAll() throws Exception {
-        String sql = "SELECT * FROM Persona";
+        String sql = "SELECT * FROM Persona WHERE EstadoRegistro ='A'";
         Connection conn = null;
         List<PersonaDTO> personas = new ArrayList<>();
         try {
@@ -96,8 +96,11 @@ public class PersonaDAO extends DataHelper {
                         rs.getString("SegundoNombre"),
                         rs.getString("PrimerApellido"),
                         rs.getString("SegundoApellido"),
-                        rs.getDate("FechaNacimiento"),
-                        rs.getString("Direccion"), sql, sql, sql
+                        rs.getString("FechaNacimiento"),
+                        rs.getString("Direccion"),
+                        rs.getString("EstadoRegistro"),
+                        rs.getString("FechaCreacion"),
+                        rs.getString("FechaModificacion")
                 ));
             }
             rs.close();
@@ -111,7 +114,7 @@ public class PersonaDAO extends DataHelper {
     }
 
     public void update(PersonaDTO persona) throws Exception {
-        String sql = "UPDATE Persona SET IdCatalogoRol = ?, IdCatalogoSexo = ?, IdCatalogoTipoIdentificacion = ?, NumeroIdentificacion = ?, PrimerNombre = ?, SegundoNombre = ?, PrimerApellido = ?, SegundoApellido = ?, FechaNacimiento = ?, Direccion = ? WHERE IdPersona = ?";
+        String sql = "UPDATE Persona SET IdCatalogoRol = ?, IdCatalogoSexo = ?, IdCatalogoTipoIdentificacion = ?, NumeroIdentificacion = ?, PrimerNombre = ?, SegundoNombre = ?, PrimerApellido = ?, SegundoApellido = ?, FechaNacimiento = ?,  Direccion = ?, FechaModificacion = datetime('now','localtime') WHERE IdPersona = ?";
         Connection conn = null;
         try {
             conn = openConnection();
@@ -124,7 +127,7 @@ public class PersonaDAO extends DataHelper {
             pstmt.setString(6, persona.getSegundoNombre());
             pstmt.setString(7, persona.getPrimerApellido());
             pstmt.setString(8, persona.getSegundoApellido());
-            pstmt.setDate(9, persona.getFechaNacimiento());
+            pstmt.setString(9, persona.getFechaNacimiento());
             pstmt.setString(10, persona.getDireccion());
             pstmt.setInt(11, persona.getIdPersona());
             pstmt.executeUpdate();

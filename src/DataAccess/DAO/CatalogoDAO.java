@@ -12,16 +12,14 @@ public class CatalogoDAO extends DataHelper{
     public void create(CatalogoDTO catalogo) throws Exception{
         String sql = "INSERT INTO Catalogo("
                    + "IdTipoCatalogo,"
-                   + "Nombre,"
-                   + "EstadoRegistro)"
-                   + "VALUES(?,?,?)";
+                   + "Nombre)"
+                   + "VALUES(?,?)";
         Connection conn = null;
         try{
             conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, catalogo.getIdTipoCatalogo());
             pstmt.setString(2, catalogo.getNombre());
-            pstmt.setString(3, catalogo.getEstadoRegistro());
             pstmt.executeUpdate();
             pstmt.close();
         }catch (SQLException e){
@@ -32,7 +30,7 @@ public class CatalogoDAO extends DataHelper{
     }
 
     public CatalogoDTO read(int id) throws Exception{
-        String sql = "SELECT * FROM Catalogo WHERE IdCatalogo = ?";
+        String sql = "SELECT * FROM Catalogo WHERE EstadoRegistro ='A' AND IdCatalogo = ?";
         Connection conn = null;
         CatalogoDTO catalogo = null;
         try{
@@ -61,7 +59,7 @@ public class CatalogoDAO extends DataHelper{
     }
 
     public List<CatalogoDTO> readAll() throws Exception {
-        String sql = "SELECT * FROM Catalogo";
+        String sql = "SELECT * FROM Catalogo WHERE EstadoRegistro ='A'";
         Connection conn = null;
         List<CatalogoDTO> catalogos = new ArrayList<>();
         try {
@@ -89,15 +87,14 @@ public class CatalogoDAO extends DataHelper{
     }
 
     public void update(CatalogoDTO catalogo) throws Exception {
-        String sql = "UPDATE Catalogo SET IdTipoCatalogo = ?, Nombre = ?, EstadoRegistro = ?, FechaModificacion = CURRENT_TIMESTAMP WHERE IdCatalogo = ?";
+        String sql = "UPDATE Catalogo SET IdTipoCatalogo = ?, Nombre = ?, FechaModificacion = datetime('now','localtime') WHERE IdCatalogo = ?";
         Connection conn = null;
         try {
             conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, catalogo.getIdTipoCatalogo());
             pstmt.setString(2, catalogo.getNombre());
-            pstmt.setString(3, catalogo.getEstadoRegistro());
-            pstmt.setInt(4, catalogo.getIdCatalogo());
+            pstmt.setInt(3, catalogo.getIdCatalogo());
             pstmt.executeUpdate();
             pstmt.close();
         } catch (SQLException e) {

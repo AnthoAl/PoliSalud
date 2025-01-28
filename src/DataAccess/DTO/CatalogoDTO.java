@@ -12,7 +12,8 @@ public class CatalogoDTO {
     
     public CatalogoDTO() { };
     
-    public CatalogoDTO(String nombre) {
+    public CatalogoDTO(Integer idTipoCatalogo, String nombre) {
+        this.IdTipoCatalogo = idTipoCatalogo;
         this.Nombre = nombre;
     }
     
