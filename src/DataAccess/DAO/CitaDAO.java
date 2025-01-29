@@ -8,7 +8,7 @@ import DataAccess.DataHelper;
 
 public class CitaDAO extends DataHelper{
     
-    public void create(CitaDTO citaDTO) throws Exception {
+    public boolean create(CitaDTO citaDTO) throws Exception {
         String sql = "INSERT INTO Cita (IdMedico, IdPaciente, FechaCita, HoraCita) VALUES (?, ?, ?, ?)";
         Connection conn = null;
         try {
@@ -21,6 +21,8 @@ public class CitaDAO extends DataHelper{
     
             pstmt.executeUpdate();
             pstmt.close();
+            return true;
+
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -90,7 +92,7 @@ public class CitaDAO extends DataHelper{
         return Cita;
     }
 
-    public void update(CitaDTO cita) throws Exception{
+    public boolean update(CitaDTO cita) throws Exception{
         String sql = "UPDATE Cita SET FechaCita = ?, HoraCita = ?, FechaModificacion = datetime('now','localtime') WHERE IdCita = ?";
         Connection conn = null;
         try{
@@ -101,6 +103,7 @@ public class CitaDAO extends DataHelper{
             pstmt.setInt(3, cita.getIdCita());
             pstmt.executeUpdate();
             pstmt.close();
+            return true;
         }catch (SQLException e){
             throw e;
         }finally{
@@ -108,7 +111,7 @@ public class CitaDAO extends DataHelper{
         }
     }
 
-    public void delete(int id) throws Exception{
+    public boolean delete(int id) throws Exception{
         String sql = "UPDATE Cita SET EstadoRegistro = 'X' WHERE idCita = ?";
         Connection conn = null;
         try{
@@ -117,6 +120,8 @@ public class CitaDAO extends DataHelper{
             pstmt.setInt(1, id);
             pstmt.executeUpdate();
             pstmt.close();
+            return true;
+
         }catch (SQLException e){
             throw e;
         } finally{
@@ -124,5 +129,20 @@ public class CitaDAO extends DataHelper{
         }
     }
 
-
+    public Integer getMaxRow()  throws Exception  {
+        String query =" SELECT COUNT(*) TotalReg FROM Cita "
+                     +" WHERE   Estado ='A' ";
+        try {
+            Connection conn = openConnection();         // conectar a DB     
+            Statement  stmt = conn.createStatement();   // CRUD : select * ...    
+            ResultSet rs   = stmt.executeQuery(query);  // ejecutar la
+            while (rs.next()) {
+                return rs.getInt(1);                    // TotalReg
+            }
+        } 
+        catch (SQLException e) {
+            throw e; //new PatException(e.getMessage(), getClass().getName(), "getMaxRow()");
+        }
+        return 0;
+    }
 }
