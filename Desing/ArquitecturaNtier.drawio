@@ -1,0 +1,76 @@
+<mxfile host="65bd71144e">
+    <diagram id="9j4kvzJo4Rp9AMqwljrr" name="Page-1">
+        <mxGraphModel dx="918" dy="563" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="&lt;font color=&quot;#1a1a1a&quot;&gt;&lt;b&gt;DAC&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/b&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;rotation=-90;gradientColor=#ea6b66;" vertex="1" parent="1">
+                    <mxGeometry x="279.48" y="131.83" width="64.03" height="340.74" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="&lt;font color=&quot;#1a1a1a&quot;&gt;&lt;b&gt;DAO&lt;/b&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9f7ed;strokeColor=#36393d;" vertex="1" parent="1">
+                    <mxGeometry x="188.62" y="278.7" width="61.38" height="47" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="&lt;font color=&quot;#1a1a1a&quot;&gt;&lt;b&gt;Data Helper&lt;/b&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9f7ed;strokeColor=#36393d;" vertex="1" parent="1">
+                    <mxGeometry x="320.12" y="278.7" width="69.88" height="47" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="&lt;font color=&quot;#1a1a1a&quot;&gt;&lt;b&gt;Business&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/b&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;rotation=-90;gradientColor=#97d077;" vertex="1" parent="1">
+                    <mxGeometry x="276.61" y="61.49000000000001" width="66.78" height="340.74" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="&lt;span style=&quot;color: rgb(26, 26, 26);&quot;&gt;&lt;b&gt;Business Logic&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;gradientColor=#b3b3b3;" vertex="1" parent="1">
+                    <mxGeometry x="191.1" y="210.85999999999999" width="114.38" height="47" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="&lt;font color=&quot;#1a1a1a&quot;&gt;&lt;b&gt;Business Entities&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;gradientColor=#b3b3b3;" vertex="1" parent="1">
+                    <mxGeometry x="320.12" y="208.36" width="139.88" height="47" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="&lt;font color=&quot;#1a1a1a&quot;&gt;App/Service &lt;b&gt;Facade &lt;/b&gt;:&amp;nbsp; Contracts, Service, WF Service&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#647687;strokeColor=#314354;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="140" y="168.95000000000002" width="340" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="&lt;b style=&quot;&quot;&gt;&lt;font color=&quot;#4d4d4d&quot;&gt;Data&lt;br&gt;Sources&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/font&gt;&lt;br&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#b85450;rotation=-90;gradientColor=#ea6b66;" vertex="1" parent="1">
+                    <mxGeometry x="268.62" y="210.86" width="86.37" height="344.63" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="&lt;font color=&quot;#1a1a1a&quot;&gt;&lt;b&gt;User&lt;br&gt;Interface&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/b&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc99;strokeColor=#36393d;rotation=-90;" vertex="1" parent="1">
+                    <mxGeometry x="264.62" y="-50" width="86.37" height="340.74" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="&lt;span style=&quot;color: rgb(26, 26, 26);&quot;&gt;UI Process Component&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;gradientColor=#b3b3b3;" vertex="1" parent="1">
+                    <mxGeometry x="189.17000000000002" y="122.49000000000001" width="131.45" height="28.62" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="&lt;span style=&quot;color: rgb(26, 26, 26);&quot;&gt;&lt;b&gt;UI Component&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;gradientColor=#b3b3b3;" vertex="1" parent="1">
+                    <mxGeometry x="188.67000000000002" y="87.49000000000001" width="131.45" height="28.62" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="&lt;span style=&quot;color: rgb(26, 26, 26);&quot;&gt;Controller&lt;br&gt;UIC&lt;br&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;gradientColor=#b3b3b3;" vertex="1" parent="1">
+                    <mxGeometry x="327.62" y="87.49000000000001" width="69" height="64" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="&lt;span style=&quot;color: rgb(26, 26, 26);&quot;&gt;External&lt;br&gt;Systems&lt;br&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;gradientColor=#b3b3b3;" vertex="1" parent="1">
+                    <mxGeometry x="402.12" y="87.37" width="69" height="64" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="&lt;b&gt;&lt;font color=&quot;#990000&quot;&gt;SQLITE&lt;/font&gt;&lt;/b&gt;" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=#6F0000;fillColor=#a20025;shape=mxgraph.azure.sql_reporting;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="266.53000000000003" y="356.23" width="38.95" height="46" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="database" style="image;html=1;image=img/lib/clip_art/computers/Database_Minus_128x128.png;strokeColor=default;fontColor=#FFFFFF;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="370" y="358.17" width="46.5" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="&lt;font color=&quot;#1a1a1a&quot;&gt;&lt;b&gt;DTO&lt;/b&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9f7ed;strokeColor=#36393d;" vertex="1" parent="1">
+                    <mxGeometry x="396.62" y="278.7" width="63.38" height="47" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="&lt;font color=&quot;#1a1a1a&quot;&gt;&lt;b&gt;IDAO&lt;/b&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9f7ed;strokeColor=#36393d;" vertex="1" parent="1">
+                    <mxGeometry x="261.48" y="278.7" width="44" height="47" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="&lt;font color=&quot;#828282&quot; style=&quot;font-size: 18px;&quot;&gt;&lt;b style=&quot;&quot;&gt;Arquitectura N-TIER&amp;nbsp;&lt;br&gt;PoliSalud&lt;br&gt;&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBackgroundColor=none;fontColor=#333333;" vertex="1" parent="1">
+                    <mxGeometry x="187.49999999999997" y="31.489999999999995" width="245" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="&lt;font color=&quot;#1a1a1a&quot;&gt;&lt;b&gt;Framework&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;gradientColor=#7ea6e0;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="80" width="125" height="258" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="&lt;span style=&quot;&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;Logging&lt;/font&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=none;gradientColor=#b3b3b3;" vertex="1" parent="1">
+                    <mxGeometry x="507.41" y="195.85" width="90.19" height="25.97" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="&lt;span style=&quot;&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;b&gt;Exception&lt;/b&gt;&lt;/font&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=none;gradientColor=#b3b3b3;" vertex="1" parent="1">
+                    <mxGeometry x="507.41" y="158.5" width="90.19" height="25.56" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;b&gt;Configuration&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=none;gradientColor=#b3b3b3;" vertex="1" parent="1">
+                    <mxGeometry x="507.40000000000003" y="233.75" width="90.19" height="25.75" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
