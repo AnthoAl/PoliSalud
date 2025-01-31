@@ -12,7 +12,6 @@ public class MainForm extends JFrame{
     public MainForm(String tilteApp) {
         customizeComponent(tilteApp);
         pnlMenu.btnHome.addActionListener(      e -> setPanel(new MainPanel())); 
-        pnlMenu.btnLogin.addActionListener(     e -> setPanel(new LoginPanel())); 
         pnlMenu.btnCita.addActionListener(      e -> {
             try {
                 setPanel(new CitaPanel());

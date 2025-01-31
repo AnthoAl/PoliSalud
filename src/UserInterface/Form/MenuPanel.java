@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 public class MenuPanel extends JPanel {
     public  PatButton   
             btnHome     = new PatButton("Home"),
-            btnLogin    = new PatButton("Login"),
             btnCita     = new PatButton("Cita");
 
     public MenuPanel(){
@@ -36,7 +35,6 @@ public class MenuPanel extends JPanel {
 
         // add-botones
         add(btnHome);
-        add(btnLogin);
         add(btnCita);
     }
 }

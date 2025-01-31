@@ -138,3 +138,5 @@ CREATE TABLE Telefono(
  ,FechaCreacion        timestamp DATE DEFAULT (datetime('now','localtime'))
  ,FechaModificacion    DATETIME
 );
+
+

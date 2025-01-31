@@ -11,7 +11,7 @@ public class CitaDTO {
     private String  FechaCreacion;
     private String  FechaModificacion;
 
-    public CitaDTO() {}
+    public CitaDTO(int idCita, String medico, String paciente, String fechaCita, String horaCita) {}
 
     public CitaDTO(Integer idMedico, Integer idPaciente, String fechaCita, String horaCita) {
         this.IdMedico = idMedico;

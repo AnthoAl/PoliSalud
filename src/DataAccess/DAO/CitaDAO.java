@@ -1,10 +1,10 @@
 package DataAccess.DAO;
 
+import DataAccess.DTO.*;
+import DataAccess.DataHelper;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import DataAccess.DTO.*;
-import DataAccess.DataHelper;
 
 public class CitaDAO extends DataHelper{
     
@@ -63,7 +63,7 @@ public class CitaDAO extends DataHelper{
     }
 
     public List<CitaDTO> readAll() throws Exception{
-        String sql = "SELECT * FROM Cita WHERE EstadoRegistro ='A'";
+        String sql = "SELECT * FROM Cita WHERE EstadoRegistro ='A'"; 
         Connection conn = null;
         List<CitaDTO> Cita = new ArrayList<>();
         try{
@@ -145,4 +145,5 @@ public class CitaDAO extends DataHelper{
         }
         return 0;
     }
+    
 }

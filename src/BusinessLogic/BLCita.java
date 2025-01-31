@@ -1,14 +1,14 @@
 package BusinessLogic;
 
-import java.util.List;
-
 import DataAccess.DAO.CitaDAO;
 import DataAccess.DTO.CitaDTO;
+import java.util.List;
 
 public class BLCita {
 
     private CitaDTO cita;       // cache
     private CitaDAO citaDAO = new CitaDAO();
+
 
     public BLCita(){}
 
