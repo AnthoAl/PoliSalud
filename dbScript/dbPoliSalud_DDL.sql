@@ -139,4 +139,22 @@ CREATE TABLE Telefono(
  ,FechaModificacion    DATETIME
 );
 
+SELECT 
+    C.IdCita, 
+    P1.PrimerNombre || ' ' || P1.SegundoNombre || ' ' || P1.PrimerApellido || ' ' || P1.SegundoApellido AS Medico,
+    P2.PrimerNombre || ' ' || P2.SegundoNombre || ' ' || P2.PrimerApellido || ' ' || P2.SegundoApellido AS Paciente,
+    C.FechaCita, 
+    C.HoraCita
+FROM 
+    Cita C
+JOIN 
+    Medico M ON C.IdMedico = M.IdMedico
+JOIN 
+    Persona P1 ON M.IdPersonaMedico = P1.IdPersona
+JOIN 
+    Paciente Pa ON C.IdPaciente = Pa.IdPaciente
+JOIN 
+    Persona P2 ON Pa.IdPersonaPaciente = P2.IdPersona
+WHERE 
+    C.EstadoRegistro = 'A';  
 

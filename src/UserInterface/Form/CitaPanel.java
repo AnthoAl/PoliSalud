@@ -65,7 +65,6 @@ public class CitaPanel extends JPanel implements ActionListener {
             try {
                 cargarCitas();
             } catch (Exception e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
         });
@@ -73,12 +72,11 @@ public class CitaPanel extends JPanel implements ActionListener {
             try {
                 eliminarCita();
             } catch (Exception e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
         });
         
-        tableModel = new DefaultTableModel(new Object[]{"ID", "Médico", "Paciente", "Fecha", "Hora"}, 0);
+        tableModel = new DefaultTableModel(new Object[]{"ID", "Médico", "Paciente", "FechaCita", "HoraCita"}, 0);
         table = new JTable(tableModel);
         JScrollPane scrollPane = new JScrollPane(table);
         
@@ -86,7 +84,6 @@ public class CitaPanel extends JPanel implements ActionListener {
             try {
                 seleccionarCita();
             } catch (Exception e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
         });
@@ -98,10 +95,17 @@ public class CitaPanel extends JPanel implements ActionListener {
 
     private void cargarCitas() throws Exception {
         tableModel.setRowCount(0);
-        List<CitaDTO> citas = BLCita.getAll();
+        List<CitaDTO> citas = BLCita.getAll();  
         for (CitaDTO c : citas) {
-            tableModel.addRow(new Object[]{c.getIdCita(), c.getIdMedico(), c.getIdPaciente(), c.getFechaCita(), c.getHoraCita()});
+            tableModel.addRow(new Object[]{
+                c.getIdCita(), 
+                c.getMedico(),     
+                c.getPaciente(),   
+                c.getFechaCita(), 
+                c.getHoraCita()
+            });
         }
+        tableModel.fireTableDataChanged();
     }
 
     private void guardarCita() {
@@ -110,9 +114,13 @@ public class CitaPanel extends JPanel implements ActionListener {
             int idPaciente = Integer.parseInt(txtPaciente.getText());
             String fecha = txtFecha.getText();
             String hora = txtHora.getText();
+            if (fecha.isEmpty() || hora.isEmpty()) {
+                IAStyle.showMsgError("La fecha y la hora no pueden estar vacías.");
+                return;
+            }
             
             if (citaActual == null) {
-                citaActual = new CitaDTO(idMedico, idPaciente, fecha, hora);
+                citaActual = new CitaDTO(idMedico, idPaciente, idPaciente, fecha, hora);
                 BLCita.create(citaActual);
             } else {
                 citaActual.setIdMedico(idMedico);
@@ -143,13 +151,17 @@ public class CitaPanel extends JPanel implements ActionListener {
         if (selectedRow != -1) {
             int idCita = (int) tableModel.getValueAt(selectedRow, 0);
             citaActual = BLCita.getByIdCita(idCita);
-            txtMedico.setText(String.valueOf(citaActual.getIdMedico()));
-            txtPaciente.setText(String.valueOf(citaActual.getIdPaciente()));
-            txtFecha.setText(citaActual.getFechaCita());
-            txtHora.setText(citaActual.getHoraCita());
-        }
+            
+            if (citaActual != null) {
+                txtMedico.setText(String.valueOf(citaActual.getIdMedico()));
+                txtPaciente.setText(String.valueOf(citaActual.getIdPaciente()));
+                txtFecha.setText(citaActual.getFechaCita());
+                txtHora.setText(citaActual.getHoraCita());
+            } else {
+                System.out.println("Error: No se pudo encontrar la cita con ID " + idCita);
+            }
     }
-
+    }
     private void limpiarFormulario() {
         citaActual = null;
         txtMedico.setText("");

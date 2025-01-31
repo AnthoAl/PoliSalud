@@ -8,6 +8,7 @@ import UserInterface.IAStyle;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -93,13 +94,26 @@ public class Cita extends JPanel implements ActionListener {
     }
 
     private void cargarCitas() {
-        tableModel.setRowCount(0);
-        /*List<CitaDTO> cita = BLCita.getAll();
-        for (CitaDTO c : cita) {
-            tableModel.addRow(new Object[]{c.getIdCita(), c.getIdMedico(), c.getIdPaciente(), c.getFechaCita(), c.getHoraCita()});
-        }*/
+        tableModel.setRowCount(0); 
+        try {
+            List<CitaDTO> citas = BLCita.getAll();
+            for (CitaDTO c : citas) {
+                System.out.println("Cargando cita: " + c.getFechaCita() + " " + c.getHoraCita()); 
+                tableModel.addRow(new Object[]{
+                    c.getIdCita(), 
+                    c.getMedico(),     
+                    c.getPaciente(),   
+                    c.getFechaCita(), 
+                    c.getHoraCita()
+                });
+            }
+            tableModel.fireTableDataChanged(); 
+        } catch (Exception e) {
+            e.printStackTrace();
+            IAStyle.showMsgError("Error al cargar citas: " + e.getMessage());
+        }
     }
-
+    
     private void guardarCita() {
         try {
             int idMedico = Integer.parseInt(txtMedico.getText());
@@ -108,7 +122,7 @@ public class Cita extends JPanel implements ActionListener {
             String hora = txtHora.getText();
             
             if (citaActual == null) {
-                citaActual = new CitaDTO(idMedico, idPaciente, fecha, hora);
+                citaActual = new CitaDTO(idMedico, idPaciente, idPaciente, fecha, hora);
                 BLCita.create(citaActual);
             } else {
                 citaActual.setIdMedico(idMedico);

@@ -1,5 +1,7 @@
 package DataAccess.DTO;
 
+import java.text.SimpleDateFormat;
+
 public class CitaDTO {
     
     private Integer IdCita;
@@ -10,15 +12,16 @@ public class CitaDTO {
     private String  EstadoRegistro;
     private String  FechaCreacion;
     private String  FechaModificacion;
+    private String medico;
+    private String paciente;
+    private String fechaCita;
+    private String horaCita;
+    private String estadoRegistro;
+    private String fechaCreacion;
+    private String fechaModificacion;
 
-    public CitaDTO(int idCita, String medico, String paciente, String fechaCita, String horaCita) {}
+    public CitaDTO(int idCita, int idPaciente2, int idPaciente3, String fechaCita, String horaCita) {}
 
-    public CitaDTO(Integer idMedico, Integer idPaciente, String fechaCita, String horaCita) {
-        this.IdMedico = idMedico;
-        this.IdPaciente = idPaciente;
-        this.FechaCita = fechaCita;
-        this.HoraCita = horaCita;
-    }
 
     public CitaDTO(Integer idCita, Integer idMedico, Integer idPaciente, String fechaCita, String horaCita, String estadoRegistro, String fechaCreacion, String fechaModificacion) {
         this.IdCita = idCita;
@@ -29,6 +32,18 @@ public class CitaDTO {
         this.EstadoRegistro = estadoRegistro;
         this.FechaCreacion = fechaCreacion;
         this.FechaModificacion = fechaModificacion;
+    }
+
+    public CitaDTO(int idCita, String medico, String paciente, String fechaCita, String horaCita,
+                   String estadoRegistro, String fechaCreacion, String fechaModificacion) {
+        this.IdCita = idCita;
+        this.medico = medico;
+        this.paciente = paciente;
+        this.fechaCita = fechaCita;
+        this.horaCita = horaCita;
+        this.estadoRegistro = estadoRegistro;
+        this.fechaCreacion = fechaCreacion;
+        this.fechaModificacion = fechaModificacion;
     }
 
     public Integer getIdCita() {
@@ -56,6 +71,7 @@ public class CitaDTO {
     }
 
     public String getFechaCita() {
+         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return FechaCita;
     }
 
@@ -64,6 +80,7 @@ public class CitaDTO {
     }
 
     public String getHoraCita() {
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
         return HoraCita;
     }
 
@@ -93,6 +110,22 @@ public class CitaDTO {
 
     public void setFechaModificacion(String fechaModificacion) {
         FechaModificacion = fechaModificacion;
+    }
+    
+    public String getMedico() {
+        return medico;
+    }
+
+    public void setMedico(String medico) {
+        this.medico = medico;
+    }
+
+    public String getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(String paciente) {
+        this.paciente = paciente;
     }
 
     @Override

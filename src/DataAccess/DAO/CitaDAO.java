@@ -63,25 +63,46 @@ public class CitaDAO extends DataHelper{
     }
 
     public List<CitaDTO> readAll() throws Exception{
-        String sql = "SELECT * FROM Cita WHERE EstadoRegistro ='A'"; 
+        String sql = "SELECT C.IdCita, " +
+                        "P1.PrimerNombre || ' ' || P1.SegundoNombre || ' ' || P1.PrimerApellido || ' ' || P1.SegundoApellido AS Medico, " +
+                        "P2.PrimerNombre || ' ' || P2.SegundoNombre || ' ' || P2.PrimerApellido || ' ' || P2.SegundoApellido AS Paciente, " +
+                        "C.FechaCita, " +
+                        "C.HoraCita, " +
+                        "C.EstadoRegistro, " +
+                        "C.FechaCreacion, " +
+                        "C.FechaModificacion " +
+                 "FROM Cita C " +
+                 "JOIN Medico M ON C.IdMedico = M.IdMedico " +
+                 "JOIN Persona P1 ON M.IdPersonaMedico = P1.IdPersona " +
+                 "JOIN Paciente Pa ON C.IdPaciente = Pa.IdPaciente " +
+                 "JOIN Persona P2 ON Pa.IdPersonaPaciente = P2.IdPersona " +
+                 "WHERE C.EstadoRegistro = 'A'"; 
         Connection conn = null;
         List<CitaDTO> Cita = new ArrayList<>();
         try{
             conn = openConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            while(rs.next()){
-                Cita.add(new CitaDTO(
-                    rs.getInt("IdCita"),
-                    rs.getInt("IdMedico"),
-                    rs.getInt("IdPaciente"),
-                    rs.getString("FechaCita"),
-                    rs.getString("HoraCita"),
-                    rs.getString("EstadoRegistro"),
-                    rs.getString("FechaCreacion"),
-                    rs.getString("FechaModificacion")
+                while (rs.next()) {
+                    String medico = rs.getString("Medico");
+                    String paciente = rs.getString("Paciente");
+                
+                    System.out.println("Medico: " + medico);
+                    System.out.println("Paciente: " + paciente);
+                    System.out.println("FechaCita: " + rs.getString("FechaCita"));
+                    System.out.println("HoraCita: " + rs.getString("HoraCita"));
+                
+                    Cita.add(new CitaDTO(
+                        rs.getInt("IdCita"),
+                        medico,
+                        paciente,
+                        rs.getString("FechaCita"),
+                        rs.getString("HoraCita"),
+                        rs.getString("EstadoRegistro"),
+                        rs.getString("FechaCreacion"),
+                        rs.getString("FechaModificacion")
                     ));
-            }
+                }
             rs.close();
             stmt.close();
         } catch (SQLException e){
