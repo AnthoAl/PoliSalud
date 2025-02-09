@@ -14,10 +14,10 @@ public class CitaDAO extends DataHelper{
         try {
             conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, citaDTO.getIdMedico());  // Asumiendo que IdMedico es un entero
-            pstmt.setInt(2, citaDTO.getIdPaciente());  // Asumiendo que IdPaciente es un entero
-            pstmt.setString(3, citaDTO.getFechaCita());  // Asumiendo que FechaCita es una cadena
-            pstmt.setString(4, citaDTO.getHoraCita());  // Asumiendo que HoraCita es un entero
+            pstmt.setInt(1, citaDTO.getIdMedico());
+            pstmt.setInt(2, citaDTO.getIdPaciente());
+            pstmt.setString(3, citaDTO.getFechaCita());
+            pstmt.setInt(4, citaDTO.getHoraCita());
     
             pstmt.executeUpdate();
             pstmt.close();
@@ -32,7 +32,7 @@ public class CitaDAO extends DataHelper{
     
 
     public CitaDTO read(int id) throws Exception{
-        String sql = "SELECT * FROM Cita WHERE EstadoRegistro ='A' AND IdCita = ?";
+        String sql = "SELECT * FROM Cita WHERE EstadoRegistro = 'A' AND IdCita = ?";
         Connection conn = null;
         CitaDTO cita = null;
         try{
@@ -46,7 +46,7 @@ public class CitaDAO extends DataHelper{
                     rs.getInt("IdMedico"),
                     rs.getInt("IdPaciente"),
                     rs.getString("FechaCita"),
-                    rs.getString("HoraCita"),
+                    rs.getInt("HoraCita"),
                     rs.getString("EstadoRegistro"),
                     rs.getString("FechaCreacion"),
                     rs.getString("FechaModificacion")
@@ -78,7 +78,7 @@ public class CitaDAO extends DataHelper{
                  "JOIN Persona P2 ON Pa.IdPersonaPaciente = P2.IdPersona " +
                  "WHERE C.EstadoRegistro = 'A'"; 
         Connection conn = null;
-        List<CitaDTO> Cita = new ArrayList<>();
+        List<CitaDTO> citas = new ArrayList<>();
         try{
             conn = openConnection();
             Statement stmt = conn.createStatement();
@@ -92,12 +92,12 @@ public class CitaDAO extends DataHelper{
                     System.out.println("FechaCita: " + rs.getString("FechaCita"));
                     System.out.println("HoraCita: " + rs.getString("HoraCita"));
                 
-                    Cita.add(new CitaDTO(
+                    citas.add(new CitaDTO(
                         rs.getInt("IdCita"),
                         medico,
                         paciente,
                         rs.getString("FechaCita"),
-                        rs.getString("HoraCita"),
+                        rs.getInt("HoraCita"),
                         rs.getString("EstadoRegistro"),
                         rs.getString("FechaCreacion"),
                         rs.getString("FechaModificacion")
@@ -110,7 +110,7 @@ public class CitaDAO extends DataHelper{
         } finally{
             closeConnection();
         }
-        return Cita;
+        return citas;
     }
 
     public boolean update(CitaDTO cita) throws Exception{
@@ -120,7 +120,7 @@ public class CitaDAO extends DataHelper{
             conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, cita.getFechaCita());
-            pstmt.setString(2, cita.getHoraCita());
+            pstmt.setInt(2, cita.getHoraCita());
             pstmt.setInt(3, cita.getIdCita());
             pstmt.executeUpdate();
             pstmt.close();
@@ -152,19 +152,18 @@ public class CitaDAO extends DataHelper{
 
     public Integer getMaxRow()  throws Exception  {
         String query =" SELECT COUNT(*) TotalReg FROM Cita "
-                     +" WHERE   Estado ='A' ";
+                     +" WHERE EstadoRegistro ='A' ";
         try {
-            Connection conn = openConnection();         // conectar a DB     
-            Statement  stmt = conn.createStatement();   // CRUD : select * ...    
-            ResultSet rs   = stmt.executeQuery(query);  // ejecutar la
+            Connection conn = openConnection();         
+            Statement  stmt = conn.createStatement();   
+            ResultSet rs   = stmt.executeQuery(query);  
             while (rs.next()) {
-                return rs.getInt(1);                    // TotalReg
+                return rs.getInt(1);                    
             }
         } 
         catch (SQLException e) {
-            throw e; //new PatException(e.getMessage(), getClass().getName(), "getMaxRow()");
+            throw e; 
         }
         return 0;
     }
-    
 }

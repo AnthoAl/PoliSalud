@@ -1,42 +1,33 @@
 package DataAccess.DTO;
 
-import java.text.SimpleDateFormat;
-
 public class CitaDTO {
-    
-    private Integer IdCita;
-    private Integer IdMedico;
-    private Integer IdPaciente;
-    private String  FechaCita;
-    private String  HoraCita;
-    private String  EstadoRegistro;
-    private String  FechaCreacion;
-    private String  FechaModificacion;
-    private String medico;
-    private String paciente;
+
+    private Integer idCita;
+    private Integer idMedico;
+    private Integer idPaciente;
     private String fechaCita;
-    private String horaCita;
+    private Integer horaCita;
     private String estadoRegistro;
     private String fechaCreacion;
     private String fechaModificacion;
+    private String medico;
+    private String paciente;
 
-    public CitaDTO(int idCita, int idPaciente2, int idPaciente3, String fechaCita, String horaCita) {}
-
-
-    public CitaDTO(Integer idCita, Integer idMedico, Integer idPaciente, String fechaCita, String horaCita, String estadoRegistro, String fechaCreacion, String fechaModificacion) {
-        this.IdCita = idCita;
-        this.IdMedico = idMedico;
-        this.IdPaciente = idPaciente;
-        this.FechaCita = fechaCita;
-        this.HoraCita = horaCita;
-        this.EstadoRegistro = estadoRegistro;
-        this.FechaCreacion = fechaCreacion;
-        this.FechaModificacion = fechaModificacion;
+    public CitaDTO(Integer idCita, Integer idMedico, Integer idPaciente, String fechaCita, Integer horaCita,
+                   String estadoRegistro, String fechaCreacion, String fechaModificacion) {
+        this.idCita = idCita;
+        this.idMedico = idMedico;
+        this.idPaciente = idPaciente;
+        this.fechaCita = fechaCita;
+        this.horaCita = horaCita;
+        this.estadoRegistro = estadoRegistro;
+        this.fechaCreacion = fechaCreacion;
+        this.fechaModificacion = fechaModificacion;
     }
 
-    public CitaDTO(int idCita, String medico, String paciente, String fechaCita, String horaCita,
+    public CitaDTO(Integer idCita, String medico, String paciente, String fechaCita, Integer horaCita,
                    String estadoRegistro, String fechaCreacion, String fechaModificacion) {
-        this.IdCita = idCita;
+        this.idCita = idCita;
         this.medico = medico;
         this.paciente = paciente;
         this.fechaCita = fechaCita;
@@ -46,72 +37,71 @@ public class CitaDTO {
         this.fechaModificacion = fechaModificacion;
     }
 
+    // Getters and setters
     public Integer getIdCita() {
-        return IdCita;
+        return idCita;
     }
 
     public void setIdCita(Integer idCita) {
-        IdCita = idCita;
+        this.idCita = idCita;
     }
 
     public Integer getIdMedico() {
-        return IdMedico;
+        return idMedico;
     }
 
     public void setIdMedico(Integer idMedico) {
-        IdMedico = idMedico;
+        this.idMedico = idMedico;
     }
 
     public Integer getIdPaciente() {
-        return IdPaciente;
+        return idPaciente;
     }
 
     public void setIdPaciente(Integer idPaciente) {
-        IdPaciente = idPaciente;
+        this.idPaciente = idPaciente;
     }
 
     public String getFechaCita() {
-         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        return FechaCita;
+        return fechaCita;
     }
 
     public void setFechaCita(String fechaCita) {
-        FechaCita = fechaCita;
+        this.fechaCita = fechaCita;
     }
 
-    public String getHoraCita() {
-        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
-        return HoraCita;
+    public Integer getHoraCita() {
+        return horaCita;
     }
 
-    public void setHoraCita(String horaCita) {
-        HoraCita = horaCita;
+    public void setHoraCita(Integer horaCita) {
+        this.horaCita = horaCita;
     }
 
     public String getEstadoRegistro() {
-        return EstadoRegistro;
+        return estadoRegistro;
     }
 
     public void setEstadoRegistro(String estadoRegistro) {
-        EstadoRegistro = estadoRegistro;
+        this.estadoRegistro = estadoRegistro;
     }
 
     public String getFechaCreacion() {
-        return FechaCreacion;
+        return fechaCreacion;
     }
 
     public void setFechaCreacion(String fechaCreacion) {
-        FechaCreacion = fechaCreacion;
+        this.fechaCreacion = fechaCreacion;
     }
 
     public String getFechaModificacion() {
-        return FechaModificacion;
+        return fechaModificacion;
     }
 
     public void setFechaModificacion(String fechaModificacion) {
-        FechaModificacion = fechaModificacion;
+        this.fechaModificacion = fechaModificacion;
     }
-    
+
     public String getMedico() {
         return medico;
     }
@@ -129,15 +119,18 @@ public class CitaDTO {
     }
 
     @Override
-    public String toString(){
-        return getClass().getName()
-        + "\n IdCita:         "+ getIdCita()            
-        + "\n IdMedico:       "+ getIdMedico()     
-        + "\n IdPaciente:     "+ getIdPaciente()     
-        + "\n FechaCita:      "+ getFechaCita()     
-        + "\n HoraCita:       "+ getHoraCita()     
-        + "\n EstadoRegistro: "+ getEstadoRegistro()  
-        + "\n FechaCreacion:  "+ getFechaCreacion()    
-        + "\n FechaModifica:  "+ getFechaModificacion();
+    public String toString() {
+        return "CitaDTO{" +
+                "idCita=" + idCita +
+                ", idMedico=" + idMedico +
+                ", idPaciente=" + idPaciente +
+                ", fechaCita='" + fechaCita + '\'' +
+                ", horaCita=" + horaCita +
+                ", estadoRegistro='" + estadoRegistro + '\'' +
+                ", fechaCreacion='" + fechaCreacion + '\'' +
+                ", fechaModificacion='" + fechaModificacion + '\'' +
+                ", medico='" + medico + '\'' +
+                ", paciente='" + paciente + '\'' +
+                '}';
     }
 }

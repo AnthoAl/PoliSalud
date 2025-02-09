@@ -11,12 +11,11 @@ public class MainForm extends JFrame{
  
     public MainForm(String tilteApp) {
         customizeComponent(tilteApp);
-        pnlMenu.btnHome.addActionListener(      e -> setPanel(new MainPanel())); 
-        pnlMenu.btnCita.addActionListener(      e -> {
+        pnlMenu.btnHome.addActionListener(e -> setPanel(new MainPanel())); 
+        pnlMenu.btnCita.addActionListener(e -> {
             try {
                 setPanel(new CitaPanel());
             } catch (Exception e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
         });  
@@ -31,13 +30,11 @@ public class MainForm extends JFrame{
         repaint();
     }
      
-    //JOptionPane.showMessageDialog(this, "Seleccionaste Opción 3");
-
     private void customizeComponent(String tilteApp) {
         setTitle(tilteApp);
         setSize(930, 800);
         setResizable(false);
-        setLocationRelativeTo(null); // Centrar en la pantalla
+        setLocationRelativeTo(null); 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Crear un contenedor para los dos paneles usando BorderLayout

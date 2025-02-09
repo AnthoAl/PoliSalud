@@ -9,6 +9,9 @@ public class PacienteDTO {
     private String  FechaCreacion;
     private String  FechaModificacion;
     
+    // Nuevas propiedades para el nombre del médico y la fecha de la cita
+    private String MedicoNombre;
+    private String FechaCita;
     
     public PacienteDTO() {
     }
@@ -18,13 +21,15 @@ public class PacienteDTO {
         this.IdCatalogoAfiliacion = idCatalogoAfiliacion;
     }
     
-    public PacienteDTO(Integer idPaciente, Integer idPersonaPaciente, Integer idCatalogoAfiliacion, String estadoRegistro, String fechaCreacion, String fechaModificacion) {
+    public PacienteDTO(Integer idPaciente, Integer idPersonaPaciente, Integer idCatalogoAfiliacion, String estadoRegistro, String fechaCreacion, String fechaModificacion, String medicoNombre, String fechaCita) {
         this.IdPaciente = idPaciente;
         this.IdPersonaPaciente = idPersonaPaciente;
         this.IdCatalogoAfiliacion = idCatalogoAfiliacion;
         this.EstadoRegistro = estadoRegistro;
         this.FechaCreacion = fechaCreacion;
         this.FechaModificacion = fechaModificacion;
+        this.MedicoNombre = medicoNombre;
+        this.FechaCita = fechaCita;
     }
 
     public Integer getIdPaciente() {
@@ -75,6 +80,23 @@ public class PacienteDTO {
         FechaModificacion = fechaModificacion;
     }
 
+    // Nuevos métodos getter y setter para MedicoNombre y FechaCita
+    public String getMedicoNombre() {
+        return MedicoNombre;
+    }
+
+    public void setMedicoNombre(String medicoNombre) {
+        MedicoNombre = medicoNombre;
+    }
+
+    public String getFechaCita() {
+        return FechaCita;
+    }
+
+    public void setFechaCita(String fechaCita) {
+        FechaCita = fechaCita;
+    }
+
     @Override
     public String toString(){
         return getClass().getName()
@@ -83,6 +105,8 @@ public class PacienteDTO {
         + "\n IdCatalogoAfiliacion: "+ getIdCatalogoAfiliacion()      
         + "\n EstadoRegistro:       "+ getEstadoRegistro()  
         + "\n FechaCreacion:        "+ getFechaCreacion()    
-        + "\n FechaModifica:        "+ getFechaModificacion();
-    } 
+        + "\n FechaModificacion:    "+ getFechaModificacion()
+        + "\n MedicoNombre:         "+ getMedicoNombre()
+        + "\n FechaCita:            "+ getFechaCita();
+    }
 }

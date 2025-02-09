@@ -157,4 +157,3 @@ JOIN
     Persona P2 ON Pa.IdPersonaPaciente = P2.IdPersona
 WHERE 
     C.EstadoRegistro = 'A';  
-

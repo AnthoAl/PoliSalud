@@ -1,5 +1,6 @@
 package DataAccess.DTO;
 
+
 public class PersonaDTO {
 
     private Integer   IdPersona;

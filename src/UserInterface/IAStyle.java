@@ -26,9 +26,11 @@ public abstract class IAStyle {
     public static final Cursor CURSOR_HAND    = new Cursor(Cursor.HAND_CURSOR);
     public static final Cursor CURSOR_DEFAULT = new Cursor(Cursor.DEFAULT_CURSOR);
 
-    public static final URL URL_MAIN  = IAStyle.class.getResource("/UserInterface/Resource/Img/Hospital.jpg");
-    public static final URL URL_LOGO  = IAStyle.class.getResource("/UserInterface/Resource/Img/Logo.png");
-    public static final URL URL_SPLASH= IAStyle.class.getResource("/UserInterface/Resource/Img/Splah.png");
+    public static final URL URL_MAIN  = IAStyle.class.getResource("/UserInterface/Resource/Login.png");
+    public static final URL URL_LOGO  = IAStyle.class.getResource("/UserInterface/Resource/Logo.png");
+    public static final URL URL_SPLASH= IAStyle.class.getResource("/UserInterface/Resource/SplahSalud.png");
+// The line `public static final URL URL_FONDO= IAStyle.class.getResource("/UserInterface/Resource/Fondo2.png");` is defining a public static final variable named `URL_FONDO` of type `URL` in the `IAStyle` class. This variable is being initialized with the result of calling the `getResource` method on the `IAStyle` class, which is used to obtain a URL for the specified resource path "/UserInterface/Resource/Fondo2.png".
+    public static final URL URL_FONDO= IAStyle.class.getResource("/UserInterface/Resource/Fondo2.png");
 
     public static final CompoundBorder createBorderRect(){
         return BorderFactory.createCompoundBorder(  new LineBorder(Color.lightGray),

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import DataAccess.DTO.CatalogoDTO;
 import DataAccess.DataHelper;
+import DataAccess.IDAO;
 
 
 public class CatalogoDAO extends DataHelper{
@@ -119,4 +120,5 @@ public class CatalogoDAO extends DataHelper{
             closeConnection();
         }
     }
+
 }

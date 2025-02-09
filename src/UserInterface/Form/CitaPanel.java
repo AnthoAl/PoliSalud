@@ -32,11 +32,11 @@ public class CitaPanel extends JPanel implements ActionListener {
         JPanel pnlFormulario = new JPanel(new GridLayout(5, 2, 5, 5));
         pnlFormulario.setBorder(BorderFactory.createTitledBorder("Agendar Cita"));
         
-        pnlFormulario.add(new JLabel("Médico:"));
+        pnlFormulario.add(new JLabel("Médico (ID):"));
         txtMedico = new PatTextBox();
         pnlFormulario.add(txtMedico);
         
-        pnlFormulario.add(new JLabel("Paciente:"));
+        pnlFormulario.add(new JLabel("Paciente (ID):"));
         txtPaciente = new PatTextBox();
         pnlFormulario.add(txtPaciente);
         
@@ -106,21 +106,24 @@ public class CitaPanel extends JPanel implements ActionListener {
             });
         }
         tableModel.fireTableDataChanged();
+        table.revalidate();
+        table.repaint();
     }
+    
 
     private void guardarCita() {
         try {
             int idMedico = Integer.parseInt(txtMedico.getText());
             int idPaciente = Integer.parseInt(txtPaciente.getText());
             String fecha = txtFecha.getText();
-            String hora = txtHora.getText();
-            if (fecha.isEmpty() || hora.isEmpty()) {
+            Integer hora = Integer.parseInt(txtHora.getText());  
+            if (fecha.isEmpty() || hora == null) {
                 IAStyle.showMsgError("La fecha y la hora no pueden estar vacías.");
                 return;
             }
             
             if (citaActual == null) {
-                citaActual = new CitaDTO(idMedico, idPaciente, idPaciente, fecha, hora);
+                citaActual = new CitaDTO(idMedico, idPaciente, hora, fecha, hora, "A", "2025-02-08", "2025-02-08");
                 BLCita.create(citaActual);
             } else {
                 citaActual.setIdMedico(idMedico);
@@ -130,12 +133,12 @@ public class CitaPanel extends JPanel implements ActionListener {
                 BLCita.update(citaActual);
             }
             limpiarFormulario();
-            cargarCitas();
+            cargarCitas(); 
         } catch (Exception e) {
             IAStyle.showMsgError("Error al guardar la cita: " + e.getMessage());
         }
     }
-
+    
     private void eliminarCita() throws Exception {
         if (citaActual != null) {
             BLCita.delete(citaActual.getIdCita());
@@ -156,12 +159,13 @@ public class CitaPanel extends JPanel implements ActionListener {
                 txtMedico.setText(String.valueOf(citaActual.getIdMedico()));
                 txtPaciente.setText(String.valueOf(citaActual.getIdPaciente()));
                 txtFecha.setText(citaActual.getFechaCita());
-                txtHora.setText(citaActual.getHoraCita());
+                txtHora.setText(String.valueOf(citaActual.getHoraCita()));
             } else {
                 System.out.println("Error: No se pudo encontrar la cita con ID " + idCita);
             }
+        }
     }
-    }
+
     private void limpiarFormulario() {
         citaActual = null;
         txtMedico.setText("");

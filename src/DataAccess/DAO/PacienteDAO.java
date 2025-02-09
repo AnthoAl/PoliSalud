@@ -41,7 +41,7 @@ public class PacienteDAO extends DataHelper{
                     rs.getInt("IdCatalogoAfiliacion"),
                     rs.getString("EstadoRegistro"),
                     rs.getString("FechaCreacion"),
-                    rs.getString("FechaModificacion")
+                    rs.getString("FechaModificacion"), sql, sql
                 );
             }
             rs.close();
@@ -69,7 +69,7 @@ public class PacienteDAO extends DataHelper{
                     rs.getInt("IdCatalogoAfiliacion"),
                     rs.getString("EstadoRegistro"),
                     rs.getString("FechaCreacion"),
-                    rs.getString("FechaModificacion")
+                    rs.getString("FechaModificacion"), sql, sql
                     ));
             }
             rs.close();
@@ -114,4 +114,44 @@ public class PacienteDAO extends DataHelper{
             closeConnection();
         }
     }
+
+    public List<PacienteDTO> getCitasPacienteMedico() throws Exception {
+        String sql = "SELECT * FROM VistaCitasPacienteMedico";  // Reemplazar con la consulta correcta si es necesario.
+        Connection conn = null;
+        List<PacienteDTO> citasPacienteMedico = new ArrayList<>();
+        try {
+            conn = openConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            while (rs.next()) {
+                // Aquí puedes crear un objeto DTO que contenga la información de la cita
+                PacienteDTO paciente = new PacienteDTO(
+                    rs.getInt("IdPaciente"),
+                    rs.getInt("IdPersonaPaciente"),
+                    rs.getInt("IdCatalogoAfiliacion"),
+                    rs.getString("EstadoRegistro"),
+                    rs.getString("FechaCreacion"),
+                    rs.getString("FechaModificacion"), sql, sql
+                );
+                
+                // Aquí puedes agregar más datos relevantes de la vista, como los detalles de la cita, médico, etc.
+                // Si la vista incluye más campos, puedes asignarlos a propiedades adicionales de tu DTO o a un nuevo DTO.
+                paciente.setMedicoNombre(rs.getString("MedicoNombre"));
+                paciente.setFechaCita(rs.getString("FechaCita"));
+                
+                citasPacienteMedico.add(paciente);
+            }
+            
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            closeConnection();
+        }
+        
+        return citasPacienteMedico;
+    }
+    
 }
