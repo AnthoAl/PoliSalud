@@ -17,7 +17,7 @@ public class CitaDAO extends DataHelper{
             pstmt.setInt(1, citaDTO.getIdMedico());
             pstmt.setInt(2, citaDTO.getIdPaciente());
             pstmt.setString(3, citaDTO.getFechaCita());
-            pstmt.setInt(4, citaDTO.getHoraCita());
+            pstmt.setString(4, citaDTO.getHoraCita());
     
             pstmt.executeUpdate();
             pstmt.close();
@@ -42,15 +42,10 @@ public class CitaDAO extends DataHelper{
             ResultSet rs = pstmt.executeQuery();
             if(rs.next()){
                 cita = new CitaDTO(
-                    rs.getInt("IdCita"),
                     rs.getInt("IdMedico"),
                     rs.getInt("IdPaciente"),
                     rs.getString("FechaCita"),
-                    rs.getInt("HoraCita"),
-                    rs.getString("EstadoRegistro"),
-                    rs.getString("FechaCreacion"),
-                    rs.getString("FechaModificacion")
-                );
+                    rs.getString("HoraCita"));
             }
             rs.close();
             pstmt.close();
@@ -64,13 +59,10 @@ public class CitaDAO extends DataHelper{
 
     public List<CitaDTO> readAll() throws Exception{
         String sql = "SELECT C.IdCita, " +
-                        "P1.PrimerNombre || ' ' || P1.SegundoNombre || ' ' || P1.PrimerApellido || ' ' || P1.SegundoApellido AS Medico, " +
-                        "P2.PrimerNombre || ' ' || P2.SegundoNombre || ' ' || P2.PrimerApellido || ' ' || P2.SegundoApellido AS Paciente, " +
+                        "P1.PrimerNombre || ' ' || P1.PrimerApellido AS Medico, " +
+                        "P2.PrimerNombre || ' ' ||  P2.PrimerApellido AS Paciente, " +
                         "C.FechaCita, " +
-                        "C.HoraCita, " +
-                        "C.EstadoRegistro, " +
-                        "C.FechaCreacion, " +
-                        "C.FechaModificacion " +
+                        "C.HoraCita " +
                  "FROM Cita C " +
                  "JOIN Medico M ON C.IdMedico = M.IdMedico " +
                  "JOIN Persona P1 ON M.IdPersonaMedico = P1.IdPersona " +
@@ -97,10 +89,7 @@ public class CitaDAO extends DataHelper{
                         medico,
                         paciente,
                         rs.getString("FechaCita"),
-                        rs.getInt("HoraCita"),
-                        rs.getString("EstadoRegistro"),
-                        rs.getString("FechaCreacion"),
-                        rs.getString("FechaModificacion")
+                        rs.getString("HoraCita")
                     ));
                 }
             rs.close();
@@ -120,7 +109,7 @@ public class CitaDAO extends DataHelper{
             conn = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, cita.getFechaCita());
-            pstmt.setInt(2, cita.getHoraCita());
+            pstmt.setString(2, cita.getHoraCita());
             pstmt.setInt(3, cita.getIdCita());
             pstmt.executeUpdate();
             pstmt.close();

@@ -179,3 +179,15 @@ VALUES
 (18, '0942233441',''),
 (19, '0925566774','2025-01-18'),
 (20, '0983322110','');
+
+SELECT C.IdCita,  
+                        P1.PrimerNombre || ' ' || P1.PrimerApellido AS Medico,  
+                        P2.PrimerNombre || ' ' ||  P2.PrimerApellido AS Paciente,  
+                        C.FechaCita,  
+                        C.HoraCita  
+                 FROM Cita C  
+                 JOIN Medico M ON C.IdMedico = M.IdMedico  
+                 JOIN Persona P1 ON M.IdPersonaMedico = P1.IdPersona  
+                 JOIN Paciente Pa ON C.IdPaciente = Pa.IdPaciente  
+                 JOIN Persona P2 ON Pa.IdPersonaPaciente = P2.IdPersona  
+                 WHERE C.EstadoRegistro = 'A'; 

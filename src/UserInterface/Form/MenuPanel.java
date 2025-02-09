@@ -22,7 +22,7 @@ public class MenuPanel extends JPanel {
 
     private void customizeComponent() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setPreferredSize(new Dimension(250, getHeight())); 
+        setPreferredSize(new Dimension(200, getHeight())); 
 
         // add-logo
         try {

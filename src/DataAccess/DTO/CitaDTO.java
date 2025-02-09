@@ -6,26 +6,33 @@ public class CitaDTO {
     private Integer idMedico;
     private Integer idPaciente;
     private String fechaCita;
-    private Integer horaCita;
+    private String horaCita;
     private String estadoRegistro;
     private String fechaCreacion;
     private String fechaModificacion;
     private String medico;
     private String paciente;
 
-    public CitaDTO(Integer idCita, Integer idMedico, Integer idPaciente, String fechaCita, Integer horaCita,
-                   String estadoRegistro, String fechaCreacion, String fechaModificacion) {
-        this.idCita = idCita;
+    public CitaDTO() {
+    }
+
+    public CitaDTO(Integer idMedico, Integer idPaciente, String fechaCita, String horaCita) {
         this.idMedico = idMedico;
         this.idPaciente = idPaciente;
         this.fechaCita = fechaCita;
         this.horaCita = horaCita;
-        this.estadoRegistro = estadoRegistro;
-        this.fechaCreacion = fechaCreacion;
-        this.fechaModificacion = fechaModificacion;
     }
 
-    public CitaDTO(Integer idCita, String medico, String paciente, String fechaCita, Integer horaCita,
+
+    public CitaDTO(Integer idCita, String medico, String paciente, String fechaCita, String horaCita) {
+        this.idCita = idCita;
+        this.medico = medico;
+        this.paciente = paciente;
+        this.fechaCita = fechaCita;
+        this.horaCita = horaCita;
+    }
+
+    public CitaDTO(Integer idCita, String medico, String paciente, String fechaCita, String horaCita,
                    String estadoRegistro, String fechaCreacion, String fechaModificacion) {
         this.idCita = idCita;
         this.medico = medico;
@@ -70,11 +77,11 @@ public class CitaDTO {
         this.fechaCita = fechaCita;
     }
 
-    public Integer getHoraCita() {
+    public String getHoraCita() {
         return horaCita;
     }
 
-    public void setHoraCita(Integer horaCita) {
+    public void setHoraCita(String horaCita) {
         this.horaCita = horaCita;
     }
 

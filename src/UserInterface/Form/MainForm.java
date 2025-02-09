@@ -32,7 +32,7 @@ public class MainForm extends JFrame{
      
     private void customizeComponent(String tilteApp) {
         setTitle(tilteApp);
-        setSize(930, 800);
+        setSize(1200, 700);
         setResizable(false);
         setLocationRelativeTo(null); 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

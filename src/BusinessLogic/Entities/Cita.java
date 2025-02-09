@@ -1,16 +1,17 @@
-package BusinessLogic;
+package BusinessLogic.Entities;
+
+import java.util.List;
 
 import DataAccess.DAO.CitaDAO;
 import DataAccess.DTO.CitaDTO;
-import java.util.List;
 
-public class BLCita {
-
+public class Cita {
+    
     private CitaDTO cita;       // cache
     private CitaDAO citaDAO = new CitaDAO();
 
 
-    public BLCita(){}
+    public Cita(){}
 
     public List<CitaDTO> getAll() throws Exception{
         return citaDAO.readAll();

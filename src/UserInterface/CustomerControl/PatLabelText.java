@@ -17,7 +17,6 @@ public class PatLabelText extends JPanel{
                                             IAStyle.FONT_SMALL, 
                                             IAStyle.COLOR_FONT_LIGHT, 
                                             IAStyle.ALIGNMENT_LEFT); 
-        //txtContenido.setBorder(txtContenido.createBorderLine());
         txtContenido.setBorderLine();
         add(lblEtiqueta, BorderLayout.NORTH);
         add(txtContenido, BorderLayout.CENTER);
